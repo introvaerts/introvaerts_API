@@ -1,32 +1,31 @@
-// const User = require("../models/User");
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
+const User = require('../models/user');
+const jwt = require('jsonwebtoken');
+const bycripter = require('../services/bcrypter');
 
 module.exports = {
-  create: (req, res) => {
-    const saltRounds = 10;
-
-    bcrypt.genSalt(saltRounds, (err, salt) => {
-      bcrypt.hash(req.body.password, salt, (err, hash) => {
-        if (err) console.log(err);
-        else {
-          console.log(hash);
-          const token = jwt.sign(
-            { id: 1 },
-            "secretKey",
-            {
-              expiresIn: "1h",
-            },
-            { algorithm: "RS256" }
-          );
-          res.json([hash, token]);
-        }
+  create: async (req, res) => {
+    const { email, password } = req.body;
+    try {
+      const hashedPassword = await bycripter.encryptPassword(password);
+      const user = await User.create({
+        email: email,
+        password: hashedPassword,
       });
-    });
-  },
-
-  // login: (req, res) => {
-  //   const decodedToken = jwt.verify(req.body["Authorization"], "secretKey");
-  //   console.log(decodedToken);
+      const token = await jwt.sign(
+        { user_id: user._id },
+        process.env.JWT_SIGNATURE
+      );
+      if (token)
+        res.json({
+          status: 'success',
+          message: 'User added successfully!',
+          token: token,
+        });
+    } catch (e) {
+      res.json({
+        code: e.status,
+        message: e.message,
+      });
+    }
   },
 };
