@@ -4,11 +4,11 @@
 
 ### Create User
 
-```
+``
 
 POST /users/create
 
-```
+``
 
 #### Sample Request Body
 
