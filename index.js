@@ -3,6 +3,7 @@ const dotenv = require("dotenv");
 const bodyParser = require("body-parser");
 const connectDB = require('./config/dbConfig');
 const userRoutes = require('./routes/users')
+const subdomainRoutes = require('./routes/subdomains')
 
 //importing routes
 
@@ -21,7 +22,8 @@ connectDB();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-// Setup routes
+// Setup routes (Just to test DB)
 app.use('/users', userRoutes);
+app.use('/subdomains', subdomainRoutes);
 
 app.listen(PORT, () => {console.log(`Listening on port ${PORT}`)});
