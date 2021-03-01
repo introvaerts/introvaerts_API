@@ -2,6 +2,8 @@ const express = require("express");
 const dotenv = require("dotenv");
 const bodyParser = require("body-parser");
 const usersRoutes = require("./routes/users");
+const connectDB = require('./config/dbConfig');
+const userRoutes = require('./routes/users')
 
 // Initializing app and port
 const app = express();
@@ -17,7 +19,15 @@ app.use("/users", usersRoutes);
 // DotEnv config
 dotenv.config();
 
-// Using th
+// DB config
+connectDB();
+
+// Body-Parser config 
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+// Setup routes
+app.use('/users', userRoutes);
 
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
