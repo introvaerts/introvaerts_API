@@ -5,6 +5,7 @@ const usersRoutes = require("./routes/users");
 const connectDB = require('./config/dbConfig');
 const userRoutes = require('./routes/users')
 const subdomainRoutes = require('./routes/subdomains')
+const galleriesRoutes = require('./routes/galleries')
 
 // Initializing app and port
 const app = express();
@@ -30,6 +31,7 @@ app.use(bodyParser.json());
 // Setup routes (Just to test DB)
 app.use('/users', userRoutes);
 app.use('/subdomains', subdomainRoutes);
+app.use('/galleries', galleriesRoutes);
 
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
