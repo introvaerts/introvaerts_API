@@ -4,12 +4,16 @@ const Schema = mongoose.Schema;
 const subdomainSchema = new Schema({
   name: {
     type: String,
-    required: true,
-    unique: true
+    required: [true, "Subdomain name is required"],
+    unique: [true, "Name is already taken"]
   },
   theme: {
     type: String,
-    required: true
+    required: [true, "Theme is required"]
+  },
+  page_title: {
+    type: String,
+    required: [true, "Page title is required"]
   },
   galleries: [{
     type: mongoose.Schema.Types.ObjectId,
@@ -23,28 +27,28 @@ const subdomainSchema = new Schema({
   contact: {
     first_name: {
       type: String,
-      required: true
+      required: [true, "First name is required"]
     },
     last_name: {
       type: String,
-      required: true
+      required: [true, "Last name is required"]
     },
     address: {
       street_and_number: {
         type: String,
-        required: true
+        required: [true, "Street name and Number are required"]
       },
       postalcode: {
         type: String,
-        required: true
+        required: [true, "Postal Code is required"]
       },
       city: {
         type: String,
-        required: true
+        required: [true, "City is required"]
       },
       country: {
         type: String,
-        required: true
+        required: [true, "Country is required"]
       }
     },
     contact_tagline: String, 
