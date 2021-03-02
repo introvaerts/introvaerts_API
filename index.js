@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const usersRoutes = require("./routes/users");
 const connectDB = require('./config/dbConfig');
 const userRoutes = require('./routes/users')
+const subdomainRoutes = require('./routes/subdomains')
 
 // Initializing app and port
 const app = express();
@@ -26,8 +27,9 @@ connectDB();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-// Setup routes
+// Setup routes (Just to test DB)
 app.use('/users', userRoutes);
+app.use('/subdomains', subdomainRoutes);
 
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
