@@ -1,7 +1,9 @@
-const subdomainsController = require("../controllers/subdomains")
+const subdomainsController = require('../controllers/subdomains');
 const express = require('express');
+const authenticateUser = require('../middlewares/auth');
 const router = express.Router();
 
-router.get('/', subdomainsController.getAll)
+router.use(authenticateUser);
+router.get('/', subdomainsController.getAllByUser);
 
 module.exports = router;

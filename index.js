@@ -11,19 +11,15 @@ const galleriesRoutes = require('./routes/galleries')
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Body-Parser config
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-
 // DotEnv config
 dotenv.config();
 
 // DB config
 connectDB();
 
-// Body-Parser config 
-app.use(bodyParser.urlencoded({ extended: false }));
+// Body-Parser config
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // Setup routes (Just to test DB)
 app.use('/users', usersRoutes);
