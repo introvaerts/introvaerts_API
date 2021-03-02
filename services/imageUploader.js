@@ -1,30 +1,26 @@
 const AWS = require('aws-sdk');
-const fs = require('fs');
-const path = require('path');
 const s3 = new AWS.S3();
 
-const uploadImage = fileName => {
-  // Setting up S3 upload parameters
-  const params = {
-    Bucket: 'elasticbeanstalk-eu-central-1-246629646731',
-    ContentEncoding: 'base64',
-    ContentDisposition: 'inline',
-    ContentType: 'image/jpeg',
-    Key: 'server.js', // File name you want to save as in S3
-    Body: fileName,
-  };
-
-  console.log(params);
-
-  // Uploading files to the bucket
-  s3.upload(params, (err, data) => {
-    if (err) {
-      console.error(err);
-      throw err;
-    } else {
-      console.log(`File uploaded successfully. ${data.Location}`);
-    }
+const uploadImage = async buffers => {
+  const params = buffers.map(buffer => {
+    return {
+      Bucket: process.env.S3_BUCKET,
+      ContentEncoding: 'base64',
+      ContentDisposition: 'inline',
+      ContentType: 'image/jpeg',
+      Key: `${[...buffer].slice(0, 3)}`, // File name you want to save as in S3
+      Body: buffer,
+    };
   });
+
+  try {
+    const responses = await Promise.all(
+      params.map(param => s3.upload(param).promise())
+    );
+    return responses.map(response => response.Location);
+  } catch (e) {
+    console.error(e);
+  }
 };
 
 module.exports = uploadImage;
