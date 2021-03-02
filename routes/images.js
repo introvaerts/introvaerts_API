@@ -1,7 +1,8 @@
-const imagesController = require("../controllers/images")
+const imagesController = require('../controllers/images');
+const authenticateUser = require('../middlewares/auth');
 const express = require('express');
 const router = express.Router();
 
-router.get('/', imagesController.getAll)
+router.post('/upload', authenticateUser, imagesController.upload);
 
 module.exports = router;
