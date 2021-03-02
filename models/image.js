@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const imageSchema = new Schema({
   caption: {
     title: String,  
-    technique: String,
+    media: String,
     year: Number,
     dimensions: String,
   },
@@ -12,7 +12,7 @@ const imageSchema = new Schema({
   description: String,
   image_url: {
     type: String, 
-    required: true
+    required: [true, "Image url is required"]
   }
 });
 
