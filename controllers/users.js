@@ -50,7 +50,7 @@ module.exports = {
           res.json({ code: 400, message: "Invalid Password" });
         }
       } else {
-        res.json({ code: 400, message: "User does not exist" });
+        res.json({ code: 401, message: "User does not exist" });
       }
     } catch (e) {
       res.json({
