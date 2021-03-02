@@ -3,6 +3,7 @@ const dotenv = require("dotenv");
 const bodyParser = require("body-parser");
 const connectDB = require('./config/dbConfig');
 const userRoutes = require('./routes/users')
+const imagesRoutes = require('./routes/images')
 
 //importing routes
 
@@ -23,5 +24,6 @@ app.use(bodyParser.json());
 
 // Setup routes
 app.use('/users', userRoutes);
+app.use('/images', imagesRoutes);
 
 app.listen(PORT, () => {console.log(`Listening on port ${PORT}`)});
