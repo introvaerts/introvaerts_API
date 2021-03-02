@@ -1,11 +1,10 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const bodyParser = require("body-parser");
-const usersRoutes = require("./routes/users");
 const connectDB = require('./config/dbConfig');
-const userRoutes = require('./routes/users')
+const usersRoutes = require("./routes/users");
 const imagesRoutes = require('./routes/images')
-const subdomainRoutes = require('./routes/subdomains')
+const subdomainsRoutes = require('./routes/subdomains')
 const galleriesRoutes = require('./routes/galleries')
 
 // Initializing app and port
@@ -27,9 +26,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // Setup routes (Just to test DB)
-app.use('/users', userRoutes);
+app.use('/users', usersRoutes);
 app.use('/images', imagesRoutes);
-app.use('/subdomains', subdomainRoutes);
+app.use('/subdomains', subdomainsRoutes);
 app.use('/galleries', galleriesRoutes);
 
 app.listen(PORT, () => {
