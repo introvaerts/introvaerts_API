@@ -1,15 +1,27 @@
+// Import models
 const Image = require('../models/image');
-const multiparty = require('multiparty');
+
+// Import services
+const imageUploader = require('../services/imageUploader');
+const Form = require('../services/formParser');
 
 const imagesController = {
-  getAll: async (req, res) => {
-    console.log('hello');
-    const form = new multiparty.Form();
-    form.parse(req, async (error, fields, files) =>
-      console.log(error, fields, files)
-    );
-    const images = await Image.find();
-    res.json(images);
+  upload: async (req, res) => {
+    try {
+      const buffers = await Form.parseImage(req, res);
+      const imageUrls = await imageUploader(buffers);
+      const imageObjects = imageUrls.map(imageUrl => {
+        return { image_url: imageUrl };
+      });
+      const images = await Image.insertMany(imageObjects);
+      res.json({
+        status: 201,
+        message: `Successfully uploaded ${images.length} images.`,
+        images: images,
+      });
+    } catch (e) {
+      console.error(e);
+    }
   },
 };
 
