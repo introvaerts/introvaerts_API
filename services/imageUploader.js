@@ -1,23 +1,23 @@
 const AWS = require('aws-sdk');
-const s3 = new AWS.S3();
 
-const uploadImage = async buffers => {
-  const params = buffers.map(buffer => {
-    return {
-      Bucket: process.env.S3_BUCKET,
-      ContentEncoding: 'base64',
-      ContentDisposition: 'inline',
-      ContentType: 'image/jpeg',
-      Key: `${[...buffer].slice(0, 3)}`, // File name you want to save as in S3
-      Body: buffer,
-    };
+const uploadImage = async parsedImage => {
+  const s3 = new AWS.S3({
+    accessKeyId: process.env.S3_ACCESS_KEY,
+    secretAccessKey: process.env.S3_SECRET_KEY,
   });
 
+  const params = {
+    Bucket: process.env.S3_BUCKET,
+    ContentEncoding: 'base64',
+    ContentDisposition: 'inline',
+    ContentType: 'image/jpeg',
+    Key: `${parsedImage[2].gallery_id}/${Date.now()}.${parsedImage[1]}`,
+    Body: parsedImage[0],
+  };
+
   try {
-    const responses = await Promise.all(
-      params.map(param => s3.upload(param).promise())
-    );
-    return responses.map(response => response.Location);
+    const s3upload = await s3.upload(params).promise();
+    return Object.assign(parsedImage[2], { image_url: s3upload.Location });
   } catch (e) {
     console.error(e);
   }
