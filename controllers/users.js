@@ -21,7 +21,7 @@ module.exports = {
         process.env.JWT_SIGNATURE
       );
       if (token)
-        res.json(response.buildResponse(token, "User created successfuly"));
+        res.json(response.signupResponse(token, "User created successfuly"));
     } catch (e) {
       res.json(response.buildError(e));
     }
@@ -40,7 +40,7 @@ module.exports = {
             process.env.JWT_SIGNATURE
           );
           if (token)
-            res.json(response.buildResponse(token, "Login successful"));
+            res.json(response.loginResponse(token, "Login successful"));
         } else {
           throw { code: 400, message: "Invalid Password" };
         }

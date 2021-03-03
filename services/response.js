@@ -1,8 +1,8 @@
 const response = {
-  buildResponse: (token, message) => {
+  signupResponse: (token, message) => {
     return {
       status: "success",
-      code: 200,
+      code: 201,
       message: message,
       token: token
     }
@@ -20,6 +20,22 @@ const response = {
       code: 200,
       message: message,
       gallery: gallery
+    }
+  },
+  loginResponse: (token, message) => {
+    return {
+      status: "success",
+      code: 200,
+      message: message,
+      token: token
+    }
+  },
+  uploadImage: (image, message) => {
+    return {
+      status: "success",
+      code: 201,
+      message: message,
+      image: image
     }
   }
 }
