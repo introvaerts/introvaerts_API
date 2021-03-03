@@ -14,6 +14,14 @@ const response = {
       message: e.message,
     }
   },
+  galleryResponse: (gallery, message) => {
+    return {
+      status: "success",
+      code: 200,
+      message: message,
+      gallery: gallery
+    }
+  },
   loginResponse: (token, message) => {
     return {
       status: "success",
