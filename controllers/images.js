@@ -1,5 +1,6 @@
 // Import models
 const Image = require('../models/image');
+const Gallery = require('../models/gallery');
 
 // Import services
 const imageUploader = require('../services/imageUploader');
@@ -8,16 +9,18 @@ const Form = require('../services/formParser');
 const imagesController = {
   upload: async (req, res) => {
     try {
-      const buffers = await Form.parseImage(req, res);
-      const imageUrls = await imageUploader(buffers);
-      const imageObjects = imageUrls.map(imageUrl => {
-        return { image_url: imageUrl };
-      });
-      const images = await Image.insertMany(imageObjects);
+      const parsedImage = await Form.parseImage(req);
+      const imageObject = await imageUploader(parsedImage);
+      const image = await Image.create(imageObject);
+      const gallery = await Gallery.findOneAndUpdate(
+        { _id: imageObject.gallery_id },
+        { $push: { images: image._id } }
+      );
+      console.log(image);
       res.json({
         status: 201,
-        message: `Successfully uploaded ${images.length} images.`,
-        images: images,
+        message: `Successfully uploaded and added to gallery ${gallery.name}`,
+        image: image,
       });
     } catch (e) {
       console.error(e);
