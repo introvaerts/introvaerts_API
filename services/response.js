@@ -13,6 +13,14 @@ const response = {
       code: e.code,
       message: e.message,
     }
+  },
+  galleryResponse: (gallery, message) => {
+    return {
+      status: "success",
+      code: 200,
+      message: message,
+      gallery: gallery
+    }
   }
 }
 
