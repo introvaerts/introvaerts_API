@@ -10,6 +10,6 @@ const gallerySchema = new Schema({
      type: mongoose.Schema.Types.ObjectId,
      ref: 'Image'
   }]
-});
+}, { versionKey: false });
 
 module.exports = mongoose.model("Gallery", gallerySchema);

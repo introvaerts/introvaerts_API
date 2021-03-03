@@ -14,6 +14,6 @@ const imageSchema = new Schema({
     type: String, 
     required: [true, "Image url is required"]
   }
-});
+}, { versionKey: false });
 
 module.exports = mongoose.model("Image", imageSchema);

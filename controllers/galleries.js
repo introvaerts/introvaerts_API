@@ -21,11 +21,10 @@ const galleriesController = {
       res.json(response.buildError(e))
     }
   },
-  addImage: async (req, res) => {
-    const { galleryId, imageId } = req.body;
+  addImage: async (galleryId, imageId) => {
     try {
       const gallery = await Gallery.findOneAndUpdate({_id: galleryId}, {$push: { images: imageId }}, { new: true });
-      res.json(response.galleryResponse(gallery, "Image added successfuly"))
+      return gallery
     } catch (e) {
       res.json(response.buildError(e))
     }

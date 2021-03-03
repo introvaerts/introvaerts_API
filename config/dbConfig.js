@@ -5,7 +5,8 @@ const connectDB = async () => {
     useNewUrlParser: true,
     useCreateIndex: true,
     useFindAndModify: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useFindAndModify: false
   };
 
   const { DBACCESS } = process.env;
