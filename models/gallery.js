@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const gallerySchema = new Schema({
   name: {
     type: String,
-    required: true
+    required: [true, "Gallery name is required"]
   },
   images: [{
      type: mongoose.Schema.Types.ObjectId,

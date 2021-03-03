@@ -12,4 +12,7 @@ module.exports = {
     });
     return hashedPassword;
   },
+  validatePassword: async (password, user) => {
+    return await bcrypt.compare(password, user.password)
+  }
 };
