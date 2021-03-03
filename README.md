@@ -4,7 +4,7 @@
 
 ### Create User
 
-``POST /users/create``
+`POST /users/create`
 
 #### Sample Request Body
 
@@ -34,7 +34,7 @@
 
 ### Login
 
-``POST /users/login``
+`POST /users/login`
 
 #### Sample Request Body
 
@@ -65,17 +65,48 @@
 ###### Wrong email
 
 ```
-{ 
-  code: 401, 
-  message: "User does not exist" 
+{
+  code: 401,
+  message: "User does not exist"
 }
 ```
 
 ###### Wrong password
 
 ```
-{ 
-  code: 400, 
-  message: "Invalid Password" 
+{
+  code: 400,
+  message: "Invalid Password"
+}
+```
+
+### Upload Image
+
+`POST /images/upload`
+
+#### Sample Request Body (Form-Data)
+
+```javascript
+{
+
+"image": "image-file.png",
+
+"description": "greatest thing ever"
+
+}
+```
+
+#### Sample Response
+
+```
+{
+    "status": 201,
+    "message": "Successfully uploaded and added to gallery default",
+    "image": {
+        "_id": "603fa96630da8d2a8ae80754",
+        "description": "adfadfd",
+        "image_url": "https://introvearts.s3.amazonaws.com/603e1b4f5f454a7ae6c191dd/1614784869838.07",
+        "__v": 0
+    }
 }
 ```
