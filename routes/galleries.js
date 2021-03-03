@@ -2,6 +2,10 @@ const galleriesController = require("../controllers/galleries")
 const express = require('express');
 const router = express.Router();
 
-router.get('/', galleriesController.getAll)
+router.get('/:galleryId', galleriesController.findOne)
+router.post('/create', galleriesController.create)
+router.patch('/addImage', galleriesController.addImage)
+router.patch('/removeImage', galleriesController.deleteImage)
+router.patch('/update', galleriesController.updateName)
 
 module.exports = router;

@@ -5,6 +5,7 @@ const Gallery = require('../models/gallery');
 // Import services
 const imageUploader = require('../services/imageUploader');
 const Form = require('../services/formParser');
+const response = require("../services/response")
 
 const imagesController = {
   upload: async (req, res) => {
@@ -23,7 +24,7 @@ const imagesController = {
         image: image,
       });
     } catch (e) {
-      console.error(e);
+      res.json(response.buildError(e));
     }
   },
 };
