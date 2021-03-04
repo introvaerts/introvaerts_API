@@ -99,7 +99,7 @@
 
 ### Upload Image
 
-`DELETE /images/:id``
+`DELETE /images/:id`
 
 #### Sample Response
 
