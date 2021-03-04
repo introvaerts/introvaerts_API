@@ -96,7 +96,7 @@
 }
 ```
 
-### Upload Image
+### Delete Image
 
 `DELETE /images/:id`
 
