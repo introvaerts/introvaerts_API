@@ -4,7 +4,6 @@ const router = express.Router();
 
 router.get('/:galleryId', galleriesController.findOne)
 router.post('/create', galleriesController.create)
-router.patch('/addImage', galleriesController.addImage)
 router.patch('/removeImage', galleriesController.deleteImage)
 router.patch('/update', galleriesController.updateName)
 

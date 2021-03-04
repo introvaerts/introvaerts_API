@@ -2,9 +2,14 @@ const multiparty = require('multiparty');
 const fs = require('fs');
 
 const organizeData = unorganizedObject => {
-  const organizedObject = {};
+  const organizedObject = {caption: {}};
+  const captionKeys = ["title", "media", "year", "dimensions"]
   Object.keys(unorganizedObject).map(key => {
-    organizedObject[key] = unorganizedObject[key][0];
+    if(captionKeys.includes(key)) {
+      organizedObject.caption[key] = unorganizedObject[key][0];
+    } else {
+      organizedObject[key] = unorganizedObject[key][0];
+    }
   });
   return organizedObject;
 };

@@ -53,6 +53,6 @@ const subdomainSchema = new Schema({
     },
     contact_tagline: String, 
   }
-});
+}, { versionKey: false });
 
 module.exports = mongoose.model("Subdomain", subdomainSchema);
