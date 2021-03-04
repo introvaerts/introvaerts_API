@@ -3,7 +3,8 @@ const authenticateUser = require('../middlewares/auth');
 const express = require('express');
 const router = express.Router();
 
-router.post('/upload', authenticateUser, imagesController.upload);
-router.delete('/delete/:id', authenticateUser, imagesController.delete);
+router.use(authenticateUser);
+router.post('/upload', imagesController.upload);
+router.delete('/delete/:id', imagesController.delete);
 
 module.exports = router;
