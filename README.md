@@ -77,7 +77,8 @@
 ```javascript
 {
   "image": "image-file.png",
-  "description": "greatest thing ever"
+  "description": "greatest thing ever",
+
 }
 ```
 
@@ -85,13 +86,27 @@
 
 ```
 {
-    "status": 201,
-    "message": "Successfully uploaded and added to gallery default",
-    "image": {
-        "_id": "603fa96630da8d2a8ae80754",
-        "description": "adfadfd",
-        "image_url": "https://introvearts.s3.amazonaws.com/603e1b4f5f454a7ae6c191dd/1614784869838.07",
-        "__v": 0
+  "status": 201,
+  "message": "Successfully uploaded and added to gallery default",
+  "image": {
+      "_id": "603fa96630da8d2a8ae80754",
+      "description": "adfadfd",
+      "image_url": "https://introvearts.s3.amazonaws.com/603e1b4f5f454a7ae6c191dd/1614784869838.07",
+      "__v": 0
     }
+}
+```
+
+### Upload Image
+
+`DELETE /images/:id``
+
+#### Sample Response
+
+```
+{
+  "status": "success",
+  "code": 204,
+  "message": "Image successfully deleted"
 }
 ```
