@@ -17,13 +17,14 @@ const galleriesController = {
   findOne: async (req, res) => {
     try {
       const { galleryId } = req.params;
-      gallery = await Gallery.findById(galleryId);
-      res.json(response.galleryResponse(gallery, 'Found gallery successfuly'));
+      const gallery = await Gallery.findById(galleryId);
+      res.json(response.galleryResponse(gallery, 'Found gallery successfully'));
     } catch (e) {
       res.json(response.buildError(e));
     }
   },
   addImage: async (galleryId, imageId) => {
+    console.log(galleryId);
     try {
       const gallery = await Gallery.findOneAndUpdate(
         { _id: galleryId },
@@ -55,7 +56,7 @@ const galleriesController = {
         { $set: { name: newName } },
         { new: true }
       );
-      res.json(response.galleryResponse(gallery, 'Name updated successfuly'));
+      res.json(response.galleryResponse(gallery, 'Name updated successfully'));
     } catch (e) {
       res.json(response.buildError(e));
     }
