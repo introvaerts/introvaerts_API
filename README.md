@@ -77,8 +77,7 @@
 ```javascript
 {
   "image": "image-file.png",
-  "description": "greatest thing ever",
-
+  "description": "greatest thing ever"
 }
 ```
 
