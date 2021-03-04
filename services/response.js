@@ -1,43 +1,50 @@
 const response = {
   signupResponse: (token, message) => {
     return {
-      status: "success",
+      status: 'success',
       code: 201,
       message: message,
-      token: token
-    }
+      token: token,
+    };
   },
-  buildError: (e) => {
+  buildError: e => {
     return {
-      status: "failed",
+      status: 'failed',
       code: e.code,
       message: e.message,
-    }
+    };
   },
   galleryResponse: (gallery, message) => {
     return {
-      status: "success",
+      status: 'success',
       code: 200,
       message: message,
-      gallery: gallery
-    }
+      gallery: gallery,
+    };
   },
   loginResponse: (token, message) => {
     return {
-      status: "success",
+      status: 'success',
       code: 200,
       message: message,
-      token: token
-    }
+      token: token,
+    };
   },
   uploadImage: (image, message) => {
     return {
-      status: "success",
+      status: 'success',
       code: 201,
       message: message,
-      image: image
-    }
-  }
-}
+      image: image,
+    };
+  },
+  deleteImage: message => {
+    return {
+      status: 'success',
+      code: 204,
+      message: message,
+    };
+  },
+};
 
 module.exports = response;
