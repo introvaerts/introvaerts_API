@@ -67,49 +67,7 @@
   message: "Invalid Password"
 }
 ```
-
-### Upload Image
-
-`POST /images/upload`
-
-#### Sample Request Body (Form-Data)
-
-```javascript
-{
-  "image": "image-file.png",
-  "description": "greatest thing ever"
-}
-```
-
-#### Sample Response
-
-```
-{
-  "status": 201,
-  "message": "Successfully uploaded and added to gallery default",
-  "image": {
-      "_id": "603fa96630da8d2a8ae80754",
-      "description": "adfadfd",
-      "image_url": "https://introvearts.s3.amazonaws.com/603e1b4f5f454a7ae6c191dd/1614784869838.07",
-      "__v": 0
-    }
-}
-```
-
-### Delete Image
-
-`DELETE /images/:id`
-
-#### Sample Response
-
-```
-{
-  "status": "success",
-  "code": 204,
-  "message": "Image successfully deleted"
-}
-```
-
+------ Subdomains --------
 ### Create Subdomain
 
 `POST /subdomains/create`
@@ -166,7 +124,7 @@
           "tagline": "my tagline",
           "description": "bla bla blaaa"
       }
-  }
+   }
 }
 ```
 
@@ -184,7 +142,7 @@
       "first_name": "got a new first name"
   },
   "page_title": "page title"
-}
+  }
 ```
 
 #### Sample Response
@@ -209,5 +167,141 @@
       "theme": "new theme",
       "page_title": "page title"
   }
+}
+```
+
+
+
+------ Gallery --------
+### Create a Gallery
+
+`POST /galleries/create`
+
+#### Sample Request Body
+
+```javascript
+{
+  "name": "My Photographs",
+}
+```
+
+#### Sample Response
+
+```
+{
+  "status": "success",
+  "code": 200,
+  "message": "Gallery created successfully",
+  "gallery": {
+    "images": [],
+    "_id": "6041ff3483c56b1axxxxxxxx",
+    "name": "My Photographs"
+  }
+}
+```
+
+### Find a Gallery
+
+`GET /galleries/:galleryId`
+`GET /galleries/6041ff3483c56b1axxxxxxxx`
+
+#### Sample Response
+
+```
+{
+  "status": "success",
+  "code": 200,
+  "message": "Found gallery successfuly",
+  "gallery": {
+    "images": [],
+    "_id": "6041ff3483c56b1axxxxxxxx",
+    "name": "My Photographs"    
+  }
+}
+```
+
+### Update Gallery Name
+
+`PATCH /galleries/:galleryId`
+
+#### Sample Request Body
+
+```javascript
+{
+  "name": "My Best Photographs",
+}
+```
+#### Sample Response
+
+```
+{
+  "status": "success",
+  "code": 200,
+  "message": "Name updated successfully",
+  "gallery": {
+    "images": [],
+    "_id": "6041ff3483c56b1a30bd13b4",
+    "name": "My Best Photographs"
+  }
+}
+```
+
+### Delete a gallery
+
+`DELETE /galleries/:galleryId`
+
+
+#### Sample Response
+
+```
+{
+    "status": "success",
+    "code": 204,
+    "message": "Successfuly deleted Newest Gallery "
+}
+```
+
+
+------ Image --------
+
+### Upload Image
+
+`POST /images/upload`
+
+#### Sample Request Body (Form-Data)
+
+```javascript
+{
+  "image": "image-file.png",
+  "description": "greatest thing ever"
+}
+```
+
+#### Sample Response
+
+```
+{
+  "status": 201,
+  "message": "Successfully uploaded and added to gallery default",
+  "image": {
+      "_id": "603fa96630da8d2a8ae80754",
+      "description": "adfadfd",
+      "image_url": "https://introvearts.s3.amazonaws.com/603e1b4f5f454a7ae6c191dd/1614784869838.07",
+      "__v": 0
+    }
+}
+```
+
+### Delete Image
+
+`DELETE /images/:id`
+
+#### Sample Response
+
+```
+{
+  "status": "success",
+  "code": 204,
+  "message": "Image successfully deleted"
 }
 ```

@@ -20,7 +20,7 @@ const imagesController = {
       res.json(
         response.uploadImage(
           image,
-          `Successfully uploaded image and added to ${gallery?.name}`
+          `Successfully uploaded image and added to ${gallery.name}`
         )
       );
     } catch (e) {
@@ -40,7 +40,7 @@ const imagesController = {
     } catch (e) {
       res.json(response.buildError(e));
     }
-  },
+  }
 };
 
 module.exports = imagesController;
