@@ -61,6 +61,19 @@ const galleriesController = {
       res.json(response.buildError(e));
     }
   },
+  delete: async (req, res) => {
+    try {
+      const { galleryId } = req.params;
+      const gallery = await Gallery.findById({ _id: galleryId });
+      const images = await Image.find({ "_id": { $in: gallery.images }})
+      S3.delete(images.map(img => img.image_url))
+      await Image.deleteMany({ "_id": { $in: gallery.images }})
+      await Gallery.deleteOne({ _id: gallery._id });
+      res.json(response.deleteGallery(`Successfuly deleted ${gallery.name} ` ))
+    } catch (e) {
+      res.json(response.buildError(e))
+    }
+  }
 };
 
 module.exports = galleriesController;
