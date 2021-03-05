@@ -67,6 +67,202 @@
   message: "Invalid Password"
 }
 ```
+------ Subdomains --------
+### Create Subdomain
+
+`POST /subdomains/create`
+
+#### Sample Request Body
+
+```
+{
+  "name": "my subdomain",
+  "theme": "daaaark",
+  "page_title": "my title",
+  "about": {
+      "tagline": "my tagline",
+      "description": "bla bla blaaa"
+  },
+  "contact": {
+      "first_name": "first name",
+      "last_name": "last name",
+      "address": {
+          "street_and_number": "sample street 100",
+          "postalcode": "10999",
+          "city": "Berlin",
+          "country": "Germany"
+      }
+  },
+  "contact_tagline": "tagline"
+}
+```
+
+#### Sample Response
+
+```
+{
+  "status": "success",
+  "code": 201,
+  "message": "Successfully created subdomain my subdomain",
+  "subdomain": {
+      "contact": {
+          "address": {
+              "street_and_number": "sample street 100",
+              "postalcode": "10999",
+              "city": "Berlin",
+              "country": "Germany"
+          },
+          "first_name": "first name",
+          "last_name": "last name"
+      },
+      "galleries": [],
+      "_id": "604204d00a17d41a1eac9bcb",
+      "name": "my subdomain",
+      "theme": "daaaark",
+      "page_title": "my title",
+      "about": {
+          "tagline": "my tagline",
+          "description": "bla bla blaaa"
+      }
+   }
+}
+```
+
+### Update Subdomain
+
+`PATCH /subdomains/update/:id`
+
+#### Sample Request Body
+
+```
+{
+  "name": "new name",
+  "theme": "new theme",
+  "contact": {
+      "first_name": "got a new first name"
+  },
+  "page_title": "page title"
+  }
+```
+
+#### Sample Response
+
+```
+{
+  "status": "success",
+  "code": 204,
+  "message": "Successfully updated new name",
+  "subdomain": {
+      "about": {
+          "tagline": "my tagline",
+          "description": "bla bla blaaa"
+      },
+      "contact": {
+          "first_name": "got a new first name",
+          "last_name": "jafkld"
+      },
+      "galleries": [],
+      "_id": "604204d00a17d41a1eac9bcb",
+      "name": "new name",
+      "theme": "new theme",
+      "page_title": "page title"
+  }
+}
+```
+
+
+
+------ Gallery --------
+### Create a Gallery
+
+`POST /galleries/create`
+
+#### Sample Request Body
+
+```javascript
+{
+  "name": "My Photographs",
+}
+```
+
+#### Sample Response
+
+```
+{
+  "status": "success",
+  "code": 200,
+  "message": "Gallery created successfully",
+  "gallery": {
+    "images": [],
+    "_id": "6041ff3483c56b1axxxxxxxx",
+    "name": "My Photographs"
+  }
+}
+```
+
+### Find a Gallery
+
+`GET /galleries/:galleryId`
+`GET /galleries/6041ff3483c56b1axxxxxxxx`
+
+#### Sample Response
+
+```
+{
+  "status": "success",
+  "code": 200,
+  "message": "Found gallery successfuly",
+  "gallery": {
+    "images": [],
+    "_id": "6041ff3483c56b1axxxxxxxx",
+    "name": "My Photographs"    
+  }
+}
+```
+
+### Update Gallery Name
+
+`PATCH /galleries/:galleryId`
+
+#### Sample Request Body
+
+```javascript
+{
+  "name": "My Best Photographs",
+}
+```
+#### Sample Response
+
+```
+{
+  "status": "success",
+  "code": 200,
+  "message": "Name updated successfully",
+  "gallery": {
+    "images": [],
+    "_id": "6041ff3483c56b1a30bd13b4",
+    "name": "My Best Photographs"
+  }
+}
+```
+
+### Delete a gallery
+
+`DELETE /galleries/:galleryId`
+
+
+#### Sample Response
+
+```
+{
+    "status": "success",
+    "code": 204,
+    "message": "Successfuly deleted Newest Gallery "
+}
+```
+
+
+------ Image --------
 
 ### Upload Image
 
@@ -109,97 +305,3 @@
   "message": "Image successfully deleted"
 }
 ```
-
-### Create a Gallery
-
-`POST /galleries/create`
-
-#### Sample Request Body
-
-```javascript
-{
-  "name": "My Photographs",
-}
-```
-
-#### Sample Response
-
-```
-{
-  "status": "success",
-  "code": 200,
-  "message": "Gallery created successfully",
-  "gallery": {
-    "images": [],
-    "_id": "6041ff3483c56b1axxxxxxxx",
-    "name": "My Photographs"
-  }
-}
-```
-
-
-### Find a Gallery
-
-`GET /galleries/:galleryId`
-`GET /galleries/6041ff3483c56b1axxxxxxxx`
-
-
-#### Sample Response
-
-```
-{
-  "status": "success",
-  "code": 200,
-  "message": "Found gallery successfuly",
-  "gallery": {
-    "images": [],
-    "_id": "6041ff3483c56b1axxxxxxxx",
-    "name": "My Photographs"
-  }
-}
-```
-
-### Update Gallery Name
-
-`PATCH /galleries/:galleryId`
-
-#### Sample Request Body
-
-```javascript
-{
-  "name": "My Best Photographs",
-}
-```
-
-#### Sample Response
-
-```
-{
-  "status": "success",
-  "code": 200,
-  "message": "Name updated successfully",
-  "gallery": {
-    "images": [],
-    "_id": "6041ff3483c56b1a30bd13b4",
-    "name": "My Best Photographs"
-  }
-}
-```
-
-
-### Delete a gallery
-
-`DELETE /galleries/:galleryId`
-
-
-#### Sample Response
-
-```
-{
-    "status": "success",
-    "code": 204,
-    "message": "Successfuly deleted Newest Gallery "
-}
-```
-
-

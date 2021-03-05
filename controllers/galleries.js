@@ -11,10 +11,9 @@ const galleriesController = {
     const { name } = req.body;
     try {
       const gallery = await Gallery.create({ name });
-      if (gallery)
-        res.json(
-          response.galleryResponse(gallery, 'Gallery created successfully')
-        );
+      res.json(
+        response.galleryResponse(gallery, 'Gallery created successfully')
+      );
     } catch (e) {
       res.json(response.buildError(e));
     }
