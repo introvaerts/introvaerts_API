@@ -6,7 +6,7 @@ const verify = {
     } 
   }, 
   password: (password) => {
-    const strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
+    const strongRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
     if(!strongRegex.test(String(password))) {
       throw { status: "failed", code: 400, message: "Password doesn't meet criteria" }
     } 

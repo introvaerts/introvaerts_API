@@ -1,15 +1,19 @@
 const Gallery = require('../models/gallery');
 const response = require('../services/response');
+const S3 = require('../services/s3');
+const Image = require('../models/image');
+
+
+
 
 const galleriesController = {
   create: async (req, res) => {
     const { name } = req.body;
     try {
       const gallery = await Gallery.create({ name });
-      if (gallery)
-        res.json(
-          response.galleryResponse(gallery, 'Gallery created successfully')
-        );
+      res.json(
+        response.galleryResponse(gallery, 'Gallery created successfully')
+      );
     } catch (e) {
       res.json(response.buildError(e));
     }
@@ -24,7 +28,6 @@ const galleriesController = {
     }
   },
   addImage: async (galleryId, imageId) => {
-    console.log(galleryId);
     try {
       const gallery = await Gallery.findOneAndUpdate(
         { _id: galleryId },
@@ -49,11 +52,12 @@ const galleriesController = {
     }
   },
   updateName: async (req, res) => {
-    const { galleryId, newName } = req.body;
+    const { galleryId } = req.params
+    const { name } = req.body;
     try {
       const gallery = await Gallery.findOneAndUpdate(
         { _id: galleryId },
-        { $set: { name: newName } },
+        { $set: { name: name } },
         { new: true }
       );
       res.json(response.galleryResponse(gallery, 'Name updated successfully'));
