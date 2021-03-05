@@ -109,3 +109,63 @@
   "message": "Image successfully deleted"
 }
 ```
+
+### Create Subdomain
+
+`POST /subdomains/create`
+
+#### Sample Request Body
+
+```
+{
+  "name": "my subdomain",
+  "theme": "daaaark",
+  "page_title": "my title",
+  "about": {
+      "tagline": "my tagline",
+      "description": "bla bla blaaa"
+  },
+  "contact": {
+      "first_name": "first name",
+      "last_name": "last name",
+      "address": {
+          "street_and_number": "sample street 100",
+          "postalcode": "10999",
+          "city": "Berlin",
+          "country": "Germany"
+      }
+  },
+  "contact_tagline": "tagline"
+}
+```
+
+#### Sample Response
+
+```
+{
+  "status": "success",
+  "code": 201,
+  "message": "Successfully created subdomain my subdomain",
+  "subdomain": {
+      "contact": {
+          "address": {
+              "street_and_number": "sample street 100",
+              "postalcode": "10999",
+              "city": "Berlin",
+              "country": "Germany"
+          },
+          "first_name": "first name",
+          "last_name": "last name"
+      },
+      "galleries": [],
+      "_id": "604204d00a17d41a1eac9bcb",
+      "name": "my subdomain",
+      "theme": "daaaark",
+      "page_title": "my title",
+      "about": {
+          "tagline": "my tagline",
+          "description": "bla bla blaaa"
+      }
+  }
+}
+```

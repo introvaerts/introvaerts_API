@@ -13,7 +13,6 @@ const logger = require('./middlewares/log');
 // Initializing app and port
 const app = express();
 const PORT = process.env.PORT || 3000;
-console.log(process.env.PORT);
 
 // Body-Parser config
 app.use(bodyParser.json());

@@ -22,6 +22,14 @@ const response = {
       gallery: gallery,
     };
   },
+  subdomainResponse: (subdomain, message) => {
+    return {
+      status: 'success',
+      code: 201,
+      message: message,
+      subdomain: subdomain,
+    };
+  },
   loginResponse: (token, message) => {
     return {
       status: 'success',
