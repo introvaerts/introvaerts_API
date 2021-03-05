@@ -169,3 +169,45 @@
   }
 }
 ```
+
+### Update Subdomain
+
+`PATCH /subdomains/update/:id`
+
+#### Sample Request Body
+
+```
+{
+  "name": "new name",
+  "theme": "new theme",
+  "contact": {
+      "first_name": "got a new first name"
+  },
+  "page_title": "page title"
+}
+```
+
+#### Sample Response
+
+```
+{
+  "status": "success",
+  "code": 204,
+  "message": "Successfully updated new name",
+  "subdomain": {
+      "about": {
+          "tagline": "my tagline",
+          "description": "bla bla blaaa"
+      },
+      "contact": {
+          "first_name": "got a new first name",
+          "last_name": "jafkld"
+      },
+      "galleries": [],
+      "_id": "604204d00a17d41a1eac9bcb",
+      "name": "new name",
+      "theme": "new theme",
+      "page_title": "page title"
+  }
+}
+```
