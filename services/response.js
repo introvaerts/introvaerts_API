@@ -30,6 +30,14 @@ const response = {
       subdomain: subdomain,
     };
   },
+  subdomainUpdate: (subdomain, message) => {
+    return {
+      status: 'success',
+      code: 204,
+      message: message,
+      subdomain: subdomain,
+    };
+  },
   loginResponse: (token, message) => {
     return {
       status: 'success',

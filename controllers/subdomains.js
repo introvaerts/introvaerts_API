@@ -4,6 +4,7 @@ const User = require('../models/user');
 
 // Import services
 const response = require('../services/response');
+const convertDotNotation = require('../services/convertDotNotation');
 
 const subdomainsController = {
   create: async (req, res) => {
@@ -18,6 +19,25 @@ const subdomainsController = {
         response.subdomainResponse(
           subdomain,
           `Successfully created subdomain ${subdomain.name}`
+        )
+      );
+    } catch (e) {
+      res.json(response.buildError(e));
+    }
+  },
+  update: async (req, res) => {
+    try {
+      subdomain = await Subdomain.findOneAndUpdate(
+        { _id: req.params.id },
+        convertDotNotation(req.body),
+        {
+          new: true,
+        }
+      );
+      res.json(
+        response.subdomainUpdate(
+          subdomain,
+          `Successfully updated ${subdomain.name}`
         )
       );
     } catch (e) {

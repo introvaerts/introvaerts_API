@@ -23,7 +23,6 @@ const galleriesController = {
     }
   },
   addImage: async (galleryId, imageId) => {
-    console.log(galleryId);
     try {
       const gallery = await Gallery.findOneAndUpdate(
         { _id: galleryId },
