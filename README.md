@@ -112,7 +112,7 @@
 
 ### Create Subdomain
 
-`POST /subdomains/create``
+`POST /subdomains/create`
 
 #### Sample Request Body
 
