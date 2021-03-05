@@ -8,6 +8,7 @@ const usersRoutes = require('./routes/users');
 const imagesRoutes = require('./routes/images');
 const subdomainsRoutes = require('./routes/subdomains');
 const galleriesRoutes = require('./routes/galleries');
+const logger = require('./middlewares/log');
 
 // Initializing app and port
 const app = express();
@@ -20,6 +21,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // DB config
 connectDB();
+
+// Winston logger
+app.use(logger);
 
 // Setup routes (Just to test DB)
 app.use('/users', usersRoutes);
