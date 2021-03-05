@@ -45,6 +45,13 @@ const response = {
       message: message,
     };
   },
+  deleteGallery: message => {
+    return {
+      status: 'success',
+      code: 204,
+      message: message,
+    };
+  }
 };
 
 module.exports = response;

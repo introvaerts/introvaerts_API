@@ -109,3 +109,97 @@
   "message": "Image successfully deleted"
 }
 ```
+
+### Create a Gallery
+
+`POST /galleries/create`
+
+#### Sample Request Body
+
+```javascript
+{
+  "name": "My Photographs",
+}
+```
+
+#### Sample Response
+
+```
+{
+  "status": "success",
+  "code": 200,
+  "message": "Gallery created successfully",
+  "gallery": {
+    "images": [],
+    "_id": "6041ff3483c56b1axxxxxxxx",
+    "name": "My Photographs"
+  }
+}
+```
+
+
+### Find a Gallery
+
+`GET /galleries/:galleryId`
+`GET /galleries/6041ff3483c56b1axxxxxxxx`
+
+
+#### Sample Response
+
+```
+{
+  "status": "success",
+  "code": 200,
+  "message": "Found gallery successfuly",
+  "gallery": {
+    "images": [],
+    "_id": "6041ff3483c56b1axxxxxxxx",
+    "name": "My Photographs"
+  }
+}
+```
+
+### Update Gallery Name
+
+`PATCH /galleries/:galleryId`
+
+#### Sample Request Body
+
+```javascript
+{
+  "name": "My Best Photographs",
+}
+```
+
+#### Sample Response
+
+```
+{
+  "status": "success",
+  "code": 200,
+  "message": "Name updated successfully",
+  "gallery": {
+    "images": [],
+    "_id": "6041ff3483c56b1a30bd13b4",
+    "name": "My Best Photographs"
+  }
+}
+```
+
+
+### Delete a gallery
+
+`DELETE /galleries/:galleryId`
+
+
+#### Sample Response
+
+```
+{
+    "status": "success",
+    "code": 204,
+    "message": "Successfuly deleted Newest Gallery "
+}
+```
+
+
