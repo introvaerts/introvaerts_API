@@ -2,6 +2,26 @@
 
 ## Endoints
 
+## User Endpoints
+[Create User](#create-user)  
+[Login](#login)
+
+## Subdomain Endpoints
+[Create Subdomain](#create-subdomain)  
+[Update Subdomain](#update-subdomain)  
+
+
+## Gallery Endpoints
+[Create a Gallery](#create-a-gallery)  
+[Find a Gallery](#find-a-gallery)  
+[Update Gallery name](#update-gallery-name)  
+[Delete a Gallery](#delete-a-gallery)  
+
+## Image Endpoints
+[Upload Image](#upload-image)  
+[Delete Image](#delete-image)  
+
+
 ### Create User
 
 `POST /users/create`
