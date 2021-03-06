@@ -22,7 +22,11 @@ const galleriesController = {
     try {
       const { galleryId } = req.params;
       const gallery = await Gallery.findById(galleryId);
-      res.json(response.galleryResponse(gallery, 'Found gallery successfully'));
+      if(gallery) {
+        res.json(response.galleryResponse(gallery, 'Found gallery successfully'));
+      } else {
+        throw {code: 404, message: "Gallery not found"}
+      }
     } catch (e) {
       res.json(response.buildError(e));
     }
