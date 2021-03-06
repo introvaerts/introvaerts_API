@@ -2,6 +2,26 @@
 
 ## Endoints
 
+## User Endpoints
+[Create User](#create-user)  
+[Login](#login)
+
+## Subdomain Endpoints
+[Create Subdomain](#create-subdomain)  
+[Update Subdomain](#update-subdomain)  
+
+
+## Gallery Endpoints
+[Create a Gallery](#create-a-gallery)  
+[Find a Gallery](#find-a-gallery)  
+[Update Gallery name](#update-gallery-name)  
+[Delete a Gallery](#delete-a-gallery)  
+
+## Image Endpoints
+[Upload Image](#upload-image)  
+[Delete Image](#delete-image)  
+
+
 ### Create User
 
 `POST /users/create`
@@ -273,7 +293,13 @@
 ```javascript
 {
   "image": "image-file.png",
+  "title": "Florence flowers",
+  "media": "Oil on canvas",
+  "year": 1942,
+  "dimestions": "150 x 200",
+  "alt_text": "Florence flowers",
   "description": "greatest thing ever"
+  "gallery_id": "6041db053a81000e66f1e714"
 }
 ```
 
