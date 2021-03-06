@@ -273,7 +273,13 @@
 ```javascript
 {
   "image": "image-file.png",
+  "title": "Florence flowers",
+  "media": "Oil on canvas",
+  "year": 1942,
+  "dimestions": "150 x 200",
+  "alt_text": "Florence flowers",
   "description": "greatest thing ever"
+  "gallery_id": "6041db053a81000e66f1e714"
 }
 ```
 
