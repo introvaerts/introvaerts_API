@@ -223,20 +223,62 @@
 ### Find a Gallery
 
 `GET /galleries/:galleryId`
-`GET /galleries/6041ff3483c56b1axxxxxxxx`
+`GET /galleries/6044b9139352920b3cdd42ae`
 
 #### Sample Response
 
 ```
 {
-  "status": "success",
-  "code": 200,
-  "message": "Found gallery successfuly",
-  "gallery": {
-    "images": [],
-    "_id": "6041ff3483c56b1axxxxxxxx",
-    "name": "My Photographs"    
-  }
+    "status": "success",
+    "code": 200,
+    "message": "Found gallery successfully",
+    "gallery": {
+        "images": [
+            "6044e5f2ce77ad35236a3b8d",
+            "6044e5fbce77ad35236a3b8e",
+            "6044e603ce77ad35236a3b8f"
+        ],
+        "_id": "6044b9139352920b3cdd42ae",
+        "name": "Testing now"
+    },
+    "images": [
+        {
+            "caption": {
+                "title": "Introvaerts Logo test 1",
+                "media": "logo",
+                "year": 2021,
+                "dimensions": "200 x 200"
+            },
+            "_id": "6044e5f2ce77ad35236a3b8d",
+            "alt_text": "Introvaerts Logo",
+            "description": "This is the logo of our startup",
+            "image_url": "https://introvearts.s3.amazonaws.com/6044b9139352920b3cdd42ae/1615128049679.png"
+        },
+        {
+            "caption": {
+                "title": "Introvaerts Logo test 2",
+                "media": "logo",
+                "year": 2021,
+                "dimensions": "200 x 200"
+            },
+            "_id": "6044e5fbce77ad35236a3b8e",
+            "alt_text": "Introvaerts Logo",
+            "description": "This is the logo of our startup",
+            "image_url": "https://introvearts.s3.eu-central-1.amazonaws.com/6044b9139352920b3cdd42ae/1615128059042.png"
+        },
+        {
+            "caption": {
+                "title": "Introvaerts Logo test 3",
+                "media": "logo",
+                "year": 2021,
+                "dimensions": "200 x 200"
+            },
+            "_id": "6044e603ce77ad35236a3b8f",
+            "alt_text": "Introvaerts Logo",
+            "description": "This is the logo of our startup",
+            "image_url": "https://introvearts.s3.eu-central-1.amazonaws.com/6044b9139352920b3cdd42ae/1615128066873.png"
+        }
+    ]
 }
 ```
 
