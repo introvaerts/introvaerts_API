@@ -29,7 +29,7 @@ const imagesController = {
   },
   delete: async (req, res) => {
     try {
-      const gallery = await Gallery.find({
+      const gallery = await Gallery.findOne({
         images: req.params.id,
       });
       const image = await Image.findById(req.params.id);
