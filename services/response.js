@@ -22,6 +22,15 @@ const response = {
       gallery: gallery,
     };
   },
+  galleryWithImagesResponse: (gallery, images, message) => {
+    return {
+      status: 'success',
+      code: 200,
+      message: message,
+      gallery: gallery,
+      images: images
+    };
+  },
   subdomainResponse: (subdomain, message) => {
     return {
       status: 'success',

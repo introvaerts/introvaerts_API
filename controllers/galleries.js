@@ -23,7 +23,8 @@ const galleriesController = {
       const { galleryId } = req.params;
       const gallery = await Gallery.findById(galleryId);
       if(gallery) {
-        res.json(response.galleryResponse(gallery, 'Found gallery successfully'));
+        const images = await Image.find({ "_id": { $in: gallery.images }})
+        res.json(response.galleryWithImagesResponse(gallery, images, 'Found gallery successfully'));
       } else {
         throw {code: 404, message: "Gallery not found"}
       }
