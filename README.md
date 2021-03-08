@@ -202,6 +202,7 @@
 ```javascript
 {
   "name": "My Photographs",
+  "subdomainId": "603d175719c620e277ccf11c"
 }
 ```
 
@@ -211,7 +212,7 @@
 {
   "status": "success",
   "code": 200,
-  "message": "Gallery created successfully",
+  "message": "Gallery created successfully and added to jasmin",
   "gallery": {
     "images": [],
     "_id": "6041ff3483c56b1axxxxxxxx",
