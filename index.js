@@ -3,6 +3,7 @@ const dotenv = require('dotenv');
 // DotEnv config
 dotenv.config();
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const connectDB = require('./config/dbConfig');
 const usersRoutes = require('./routes/users');
 const imagesRoutes = require('./routes/images');
@@ -17,6 +18,9 @@ const PORT = process.env.PORT || 3000;
 // Body-Parser config
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// cors
+app.use(cors());
 
 // DB config
 connectDB();
