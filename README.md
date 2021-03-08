@@ -10,6 +10,7 @@
 [Create Subdomain](#create-subdomain)  
 [Update Subdomain](#update-subdomain)  
 [Find a Subdomain](#find-a-subdomain)  
+[Check Subdomain name availability](#check-subdomain-name-availability)  
 
 
 ## Gallery Endpoints
@@ -243,10 +244,10 @@
 }
 ```
 
-### Check name availability
+### Check Subdomain name availability
 
-`GET /subdomains/isAvailable/:name`
-`GET /subdomains/isAvailable/jasmin`
+`GET /subdomains/available/:name`
+`GET /subdomains/available/jasmin`
 
 #### Sample Response
 
