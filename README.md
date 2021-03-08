@@ -120,7 +120,8 @@ Authorization token in header
 
 ```
 {
-  "email": "monti@thenewmaster.com"
+  "email": "monti@thenewmaster.com",
+  "subdomains": []
 }
 ```
 
