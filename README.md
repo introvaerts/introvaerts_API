@@ -194,7 +194,7 @@
 ### Find a Subdomain
 
 `GET /subdomains/:subdomainId`
-`GET /galleries/603d175719c620e277ccf11c`
+`GET /subdomains/603d175719c620e277ccf11c`
 
 #### Sample Response
 
@@ -240,6 +240,27 @@
             "name": "Testing again"
         }
     ]
+}
+```
+
+### Check name availability
+
+`GET /subdomains/isAvailable/:name`
+`GET /subdomains/isAvailable/jasmin`
+
+#### Sample Response
+
+```
+{
+    "message": "The name jasmin is not available",
+    "isAvailable": false
+}
+```
+OR
+```
+{
+    "message": "The name jasmin is available",
+    "isAvailable": true
 }
 ```
 
