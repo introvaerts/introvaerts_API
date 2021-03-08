@@ -94,8 +94,6 @@ const subdomainsController = {
     try {
       const { name } = req.params;
       const foundSubdomains = await Subdomain.find({name: name.toLowerCase()});
-      console.log(foundSubdomains)
-      console.log(name)
       const isAvailable = foundSubdomains.length ? false : true;
       const message = `The name ${name} is ${isAvailable ? "" : "not "}available`
       res.json({ message: message, isAvailable: isAvailable })
