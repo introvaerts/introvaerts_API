@@ -57,7 +57,7 @@ module.exports = {
         status: 'success',
         code: 200,
         message: 'Successfully found user',
-        user: user.email,
+        user: { email: user.email, subdomains: user.subdomains },
       });
     } catch (e) {
       res.json(response.buildError(e));
