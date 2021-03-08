@@ -9,6 +9,7 @@
 ## Subdomain Endpoints
 [Create Subdomain](#create-subdomain)  
 [Update Subdomain](#update-subdomain)  
+[Find a Subdomain](#find-a-subdomain)  
 
 
 ## Gallery Endpoints
@@ -187,6 +188,58 @@
       "theme": "new theme",
       "page_title": "page title"
   }
+}
+```
+
+### Find a Subdomain
+
+`GET /subdomains/:subdomainId`
+`GET /galleries/603d175719c620e277ccf11c`
+
+#### Sample Response
+
+```
+{
+    "status": "success",
+    "code": 201,
+    "message": "Found subdomain successfully",
+    "subdomain": {
+        "about": {
+            "about_image_url": "noceimage.com",
+            "tagline": "beautiful shit",
+            "description": "Holy cow"
+        },
+        "contact": {
+            "address": {
+                "street_and_number": "allocateurstr. 1122",
+                "postalcode": "12044",
+                "city": "Berlin",
+                "country": "Germany"
+            },
+            "first_name": "Jasmin",
+            "last_name": "Jenull"
+        },
+        "galleries": [
+            "6045d5cf45b0d908792f3b53",
+            "6045d6571304d508f7c87f60"
+        ],
+        "_id": "603d175719c620e277ccf11c",
+        "name": "jasmin",
+        "theme": "black",
+        "contact_tagline": "Please buy my crap"
+    },
+    "galleries": [
+        {
+            "images": [],
+            "_id": "6045d5cf45b0d908792f3b53",
+            "name": "testing adding to subdomain"
+        },
+        {
+            "images": [],
+            "_id": "6045d6571304d508f7c87f60",
+            "name": "Testing again"
+        }
+    ]
 }
 ```
 

@@ -31,12 +31,13 @@ const response = {
       images: images
     };
   },
-  subdomainResponse: (subdomain, message) => {
+  subdomainResponse: (subdomain, galleries, message) => {
     return {
       status: 'success',
       code: 201,
       message: message,
       subdomain: subdomain,
+      galleries: galleries
     };
   },
   subdomainUpdate: (subdomain, message) => {

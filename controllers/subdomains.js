@@ -1,5 +1,6 @@
 // Import models
 const Subdomain = require('../models/subdomain');
+const Gallery = require('../models/gallery');
 const User = require('../models/user');
 
 // Import services
@@ -59,6 +60,20 @@ const subdomainsController = {
         { new: true }
       );
       return subdomain;
+    } catch (e) {
+      res.json(response.buildError(e));
+    }
+  },
+  findOne: async (req, res) => {
+    try {
+      const { id } = req.params;
+      const subdomain = await Subdomain.findById(id);
+      if(subdomain) {
+        const galleries = await Gallery.find({ "_id": { $in: subdomain.galleries }})
+        res.json(response.subdomainResponse(subdomain, galleries, 'Found subdomain successfully'));
+      } else {
+        throw {code: 404, message: "Subdomain not found"}
+      }
     } catch (e) {
       res.json(response.buildError(e));
     }
