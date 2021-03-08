@@ -51,6 +51,18 @@ const subdomainsController = {
     });
     res.json(subdomains);
   },
+  addGallery: async (subdomainId, galleryId) => {
+    try {
+      const subdomain = await Subdomain.findOneAndUpdate(
+        { _id: subdomainId },
+        { $push: { galleries: galleryId } },
+        { new: true }
+      );
+      return subdomain;
+    } catch (e) {
+      res.json(response.buildError(e));
+    }
+  }
 };
 
 module.exports = subdomainsController;

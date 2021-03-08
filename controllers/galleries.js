@@ -2,17 +2,19 @@ const Gallery = require('../models/gallery');
 const response = require('../services/response');
 const S3 = require('../services/s3');
 const Image = require('../models/image');
+const { addGallery } = require('./subdomains');
 
 
 
 
 const galleriesController = {
   create: async (req, res) => {
-    const { name } = req.body;
+    const { name, subdomainId } = req.body;
     try {
       const gallery = await Gallery.create({ name });
+      const subdomain = await addGallery(subdomainId, gallery._id);
       res.json(
-        response.galleryResponse(gallery, 'Gallery created successfully')
+        response.galleryResponse(gallery, `Gallery created successfully and added to ${subdomain.name}`)
       );
     } catch (e) {
       res.json(response.buildError(e));
