@@ -20,8 +20,8 @@ const galleriesController = {
   },
   findOne: async (req, res) => {
     try {
-      const { galleryId } = req.params;
-      const gallery = await Gallery.findById(galleryId);
+      const { id } = req.params;
+      const gallery = await Gallery.findById(id);
       if(gallery) {
         res.json(response.galleryResponse(gallery, 'Found gallery successfully'));
       } else {
@@ -50,17 +50,18 @@ const galleriesController = {
         { $pull: { images: imageId } },
         { new: true }
       );
+      console.log("gallery c", gallery)
       return gallery;
     } catch (e) {
       res.json(response.buildError(e));
     }
   },
   updateName: async (req, res) => {
-    const { galleryId } = req.params
+    const { id } = req.params
     const { name } = req.body;
     try {
       const gallery = await Gallery.findOneAndUpdate(
-        { _id: galleryId },
+        { _id: id },
         { $set: { name: name } },
         { new: true }
       );
@@ -71,8 +72,8 @@ const galleriesController = {
   },
   delete: async (req, res) => {
     try {
-      const { galleryId } = req.params;
-      const gallery = await Gallery.findById({ _id: galleryId });
+      const { id } = req.params;
+      const gallery = await Gallery.findById({ _id: id });
       const images = await Image.find({ "_id": { $in: gallery.images }})
       S3.delete(images.map(img => img.image_url))
       await Image.deleteMany({ "_id": { $in: gallery.images }})
