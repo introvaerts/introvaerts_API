@@ -18,9 +18,9 @@ const imagesController = {
       const image = await Image.create(imageObject);
       const gallery = await addImage(imageObject.gallery_id, image._id);
       res.json(
-        response.uploadImage(
-          image,
-          `Successfully uploaded image and added to ${gallery.name}`
+        response.create( 201,
+          `Successfully uploaded image and added to ${gallery.name}`,
+          image
         )
       );
     } catch (e) {
@@ -36,7 +36,7 @@ const imagesController = {
       S3.delete([image.image_url]);
       await Image.deleteOne({ _id: image._id });
       await deleteImage(gallery._id, image._id);
-      res.json(response.deleteImage('Image successfully deleted'));
+      res.json(response.create(204, 'Image successfully deleted'));
     } catch (e) {
       res.json(response.buildError(e));
     }

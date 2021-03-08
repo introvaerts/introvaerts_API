@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('../services/bcrypt');
 const verify = require('../services/verify');
 const response = require('../services/response');
+const Subdomain = require('../models/subdomain');
 
 module.exports = {
   create: async (req, res) => {
@@ -20,7 +21,7 @@ module.exports = {
         process.env.JWT_SIGNATURE
       );
       if (token)
-        res.json(response.signupResponse(token, 'User created successfuly'));
+        res.json(response.create(201, 'User created successfuly', {token: token}));
     } catch (e) {
       res.json(response.buildError(e));
     }
@@ -39,12 +40,12 @@ module.exports = {
             process.env.JWT_SIGNATURE
           );
           if (token)
-            res.json(response.loginResponse(token, 'Login successful'));
+            res.json(response.create(200, 'Login successful', { token: token }));
         } else {
           throw { code: 400, message: 'Invalid Password' };
         }
       } else {
-        throw { code: 401, message: 'User does not exist' };
+        throw { code: 401, message: 'User not found' };
       }
     } catch (e) {
       res.json(response.buildError(e));
@@ -53,12 +54,12 @@ module.exports = {
   getInfo: async (req, res) => {
     try {
       const user = await User.findById(req.user_id);
-      res.json({
-        status: 'success',
-        code: 200,
-        message: 'Successfully found user',
-        user: user.email,
-      });
+      if(user) {
+        const subdomains = await Subdomain.find({ "_id": { $in: user.subdomains }})
+        res.json(response.create(200, 'Successfully found user', { userEmail: user.email, subdomains: subdomains }));
+      } else {
+        throw { code: 404, message: "User not found" }
+      }
     } catch (e) {
       res.json(response.buildError(e));
     }
@@ -68,12 +69,11 @@ module.exports = {
       const user = await User.findOneAndUpdate({ _id: req.user_id }, req.body, {
         new: true,
       });
-      res.json({
-        status: 'success',
-        code: 204,
-        message: 'Successfully updated email',
-        user: user.email,
-      });
+      if(user) {
+        res.json(response.create(204, 'successfully updated email', {user: user.email}));
+      } else {
+        throw { code: 404, message: 'User not found' }
+      }
     } catch (e) {
       res.json(response.buildError(e));
     }
