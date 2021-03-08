@@ -64,6 +64,18 @@ const subdomainsController = {
       res.json(response.buildError(e));
     }
   },
+  deleteGallery: async (subdomainId, galleryId) => {
+    try {
+      const subdomain = await Subdomain.findOneAndUpdate(
+        { _id: subdomainId },
+        { $pull: { galleries: galleryId } },
+        { new: true }
+      );
+      return subdomain;
+    } catch (e) {
+      res.json(response.buildError(e));
+    }
+  },
   findOne: async (req, res) => {
     try {
       const { id } = req.params;
