@@ -5,6 +5,6 @@ const router = express.Router();
 
 router.use(authenticateUser);
 router.post('/upload', imagesController.upload);
-router.delete('/delete/:id', imagesController.delete);
+router.delete('/:id', imagesController.delete);
 
 module.exports = router;

@@ -150,7 +150,7 @@
 
 ### Update Subdomain
 
-`PATCH /subdomains/update/:id`
+`PATCH /subdomains/:id`
 
 #### Sample Request Body
 
@@ -202,6 +202,7 @@
 ```javascript
 {
   "name": "My Photographs",
+  "subdomainId": "603d175719c620e277ccf11c"
 }
 ```
 
@@ -211,7 +212,7 @@
 {
   "status": "success",
   "code": 200,
-  "message": "Gallery created successfully",
+  "message": "Gallery created successfully and added to jasmin",
   "gallery": {
     "images": [],
     "_id": "6041ff3483c56b1axxxxxxxx",
@@ -284,7 +285,7 @@
 
 ### Update Gallery Name
 
-`PATCH /galleries/:galleryId`
+`PATCH /galleries/:id`
 
 #### Sample Request Body
 
@@ -310,7 +311,7 @@
 
 ### Delete a gallery
 
-`DELETE /galleries/:galleryId`
+`DELETE /galleries/:id`
 
 
 #### Sample Response
@@ -338,7 +339,7 @@
   "title": "Florence flowers",
   "media": "Oil on canvas",
   "year": 1942,
-  "dimestions": "150 x 200",
+  "dimensions": "150 x 200",
   "alt_text": "Florence flowers",
   "description": "greatest thing ever"
   "gallery_id": "6041db053a81000e66f1e714"
@@ -349,13 +350,19 @@
 
 ```
 {
-  "status": 201,
-  "message": "Successfully uploaded and added to gallery default",
-  "image": {
-      "_id": "603fa96630da8d2a8ae80754",
-      "description": "adfadfd",
-      "image_url": "https://introvearts.s3.amazonaws.com/603e1b4f5f454a7ae6c191dd/1614784869838.07",
-      "__v": 0
+    "status": "success",
+    "code": 201,
+    "message": "Successfully uploaded image and added to some gallery",
+    "image": {
+        "_id": "6044b6930eb5a5093f7d6aca",
+        "caption": {
+            "title": "Florence flowers",
+            "media": "Oil on canvas",
+            "year": 1942
+        },
+        "alt_text": "Florence flowers",
+        "description": "greatest thing ever",
+        "image_url": "https://introvearts.s3.amazonaws.com/6041db053a81000e66f1e714/1615115922792.png"
     }
 }
 ```
