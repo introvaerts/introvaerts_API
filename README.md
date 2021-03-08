@@ -13,7 +13,8 @@
 
 [Create Subdomain](#create-subdomain)  
 [Update Subdomain](#update-subdomain)  
-[Find a Subdomain](#find-a-subdomain)
+[Find a Subdomain](#find-a-subdomain)  
+[Check Subdomain name availability](#check-subdomain-name-availability)  
 
 ## Gallery Endpoints
 
@@ -373,7 +374,7 @@ Authorization token in header
 ### Find a Subdomain
 
 `GET /subdomains/:subdomainId`
-`GET /galleries/603d175719c620e277ccf11c`
+`GET /subdomains/603d175719c620e277ccf11c`
 
 #### Sample Response
 
@@ -427,6 +428,26 @@ Authorization token in header
 }
 ```
 
+### Check Subdomain name availability
+
+`GET /subdomains/available/:name`
+`GET /subdomains/available/jasmin`
+
+#### Sample Response
+
+```
+{
+    "message": "The name jasmin is not available",
+    "isAvailable": false
+}
+```
+OR
+```
+{
+    "message": "The name jasmin is available",
+    "isAvailable": true
+}
+```
 ------ Gallery --------
 
 ### Create a Gallery
