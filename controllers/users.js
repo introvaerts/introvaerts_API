@@ -50,4 +50,32 @@ module.exports = {
       res.json(response.buildError(e));
     }
   },
+  getInfo: async (req, res) => {
+    try {
+      const user = await User.findById(req.user_id);
+      res.json({
+        status: 'success',
+        code: 200,
+        message: 'Successfully found user',
+        user: user.email,
+      });
+    } catch (e) {
+      res.json(response.buildError(e));
+    }
+  },
+  updateEmail: async (req, res) => {
+    try {
+      const user = await User.findOneAndUpdate({ _id: req.user_id }, req.body, {
+        new: true,
+      });
+      res.json({
+        status: 'success',
+        code: 204,
+        message: 'Successfully updated email',
+        user: user.email,
+      });
+    } catch (e) {
+      res.json(response.buildError(e));
+    }
+  },
 };

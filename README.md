@@ -3,25 +3,29 @@
 ## Endoints
 
 ## User Endpoints
+
 [Create User](#create-user)  
 [Login](#login)
+[Get info](#get-info)
+[Update email](#update-email)
 
 ## Subdomain Endpoints
+
 [Create Subdomain](#create-subdomain)  
 [Update Subdomain](#update-subdomain)  
-[Find a Subdomain](#find-a-subdomain)  
-
+[Find a Subdomain](#find-a-subdomain)
 
 ## Gallery Endpoints
+
 [Create a Gallery](#create-a-gallery)  
 [Find a Gallery](#find-a-gallery)  
 [Update Gallery name](#update-gallery-name)  
-[Delete a Gallery](#delete-a-gallery)  
+[Delete a Gallery](#delete-a-gallery)
 
 ## Image Endpoints
-[Upload Image](#upload-image)  
-[Delete Image](#delete-image)  
 
+[Upload Image](#upload-image)  
+[Delete Image](#delete-image)
 
 ### Create User
 
@@ -88,7 +92,51 @@
   message: "Invalid Password"
 }
 ```
+
+## Get Info
+
+`GET /users/account`
+
+#### Sample Request
+
+Authorization token in header
+
+#### Sample Response
+
+```
+{
+  "status": "success",
+  "code": 200,
+  "message": "Successfully found user",
+  "user": "monti@themaster.com"
+}
+```
+
+## Update email
+
+`PATCH /users/account`
+
+#### Sample Request
+
+```
+{
+  "email": "monti@thenewmaster.com"
+}
+```
+
+#### Sample Response
+
+```
+{
+  "status": "success",
+  "code": 204,
+  "message": "Successfully updated email",
+  "user": "monti@thenewmaster.com"
+}
+```
+
 ------ Subdomains --------
+
 ### Create Subdomain
 
 `POST /subdomains/create`
@@ -243,9 +291,8 @@
 }
 ```
 
-
-
 ------ Gallery --------
+
 ### Create a Gallery
 
 `POST /galleries/create`
@@ -347,6 +394,7 @@
   "name": "My Best Photographs",
 }
 ```
+
 #### Sample Response
 
 ```
@@ -366,7 +414,6 @@
 
 `DELETE /galleries/:id`
 
-
 #### Sample Response
 
 ```
@@ -376,7 +423,6 @@
     "message": "Successfuly deleted Newest Gallery "
 }
 ```
-
 
 ------ Image --------
 
