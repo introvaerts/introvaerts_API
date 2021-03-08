@@ -15,7 +15,7 @@ const galleriesController = {
       const gallery = await Gallery.create({ name });
       const subdomain = await addGallery(subdomainId, gallery._id);
       res.json(
-        response.galleryResponse(gallery, `Gallery created successfully and added to ${subdomain.name}`)
+        response.create(201, `Gallery created successfully and added to ${subdomain.name}`, gallery)
       );
     } catch (e) {
       res.json(response.buildError(e));
@@ -27,7 +27,7 @@ const galleriesController = {
       const gallery = await Gallery.findById(id);
       if(gallery) {
         const images = await Image.find({ "_id": { $in: gallery.images }})
-        res.json(response.galleryWithImagesResponse(gallery, images, 'Found gallery successfully'));
+        res.json(response.create(200, 'Found gallery successfully', { gallery: gallery, images: images }));
       } else {
         throw {code: 404, message: "Gallery not found"}
       }
@@ -68,7 +68,7 @@ const galleriesController = {
         { $set: { name: name } },
         { new: true }
       );
-      res.json(response.galleryResponse(gallery, 'Name updated successfully'));
+      res.json(response.create(200, 'Name updated successfully', gallery));
     } catch (e) {
       res.json(response.buildError(e));
     }
@@ -86,7 +86,7 @@ const galleriesController = {
         }
         await Gallery.deleteOne({ _id: gallery._id });
         await deleteGallery(subdomain._id, gallery._id)
-        res.json(response.deleteGallery(`Successfuly deleted ${gallery.name} ` ))
+        res.json(response.create(204, `Successfuly deleted ${gallery.name}`))
       } else {
         throw { code: 404, message: "Gallery doesn't exist" }
       }

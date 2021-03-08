@@ -17,10 +17,11 @@ const subdomainsController = {
         { new: true }
       );
       res.json(
-        response.subdomainResponse(
-          subdomain,
-          `Successfully created subdomain ${subdomain.name}`
-        )
+        response.create( 
+          201, 
+          `Successfully created subdomain ${subdomain.name}`,
+          subdomain
+          )
       );
     } catch (e) {
       res.json(response.buildError(e));
@@ -36,9 +37,10 @@ const subdomainsController = {
         }
       );
       res.json(
-        response.subdomainUpdate(
-          subdomain,
-          `Successfully updated ${subdomain.name}`
+        response.create(
+          204,
+          `Successfully updated ${subdomain.name}`,
+          subdomain
         )
       );
     } catch (e) {
@@ -46,11 +48,20 @@ const subdomainsController = {
     }
   },
   getAllByUser: async (req, res) => {
-    const user = await User.findById(req.user_id);
-    const subdomains = await Subdomain.find({
-      _id: { $in: user.subdomains },
-    });
-    res.json(subdomains);
+    try {
+      console.log(req.user_id)
+      const user = await User.findById(req.user_id);
+      if(user) {
+        const subdomains = await Subdomain.find({
+        _id: { $in: user.subdomains },
+      });
+      res.json(response.create(200, 'Found all subdomains', subdomains));
+      } else {
+        throw { code: 404, message: "User doesn't exist" };
+      }
+    } catch (e) {
+      res.json(response.buildError(e))
+    }
   },
   addGallery: async (subdomainId, galleryId) => {
     try {
@@ -61,7 +72,7 @@ const subdomainsController = {
       );
       return subdomain;
     } catch (e) {
-      res.json(response.buildError(e));
+      throw e;
     }
   },
   deleteGallery: async (subdomainId, galleryId) => {
@@ -73,7 +84,7 @@ const subdomainsController = {
       );
       return subdomain;
     } catch (e) {
-      res.json(response.buildError(e));
+      throw e;
     }
   },
   findOne: async (req, res) => {
@@ -82,7 +93,7 @@ const subdomainsController = {
       const subdomain = await Subdomain.findById(id);
       if(subdomain) {
         const galleries = await Gallery.find({ "_id": { $in: subdomain.galleries }})
-        res.json(response.subdomainResponse(subdomain, galleries, 'Found subdomain successfully'));
+        res.json(response.create(200, 'Found subdomain successfully', {subdomain: subdomain, galleries: galleries}));
       } else {
         throw {code: 404, message: "Subdomain not found"}
       }
