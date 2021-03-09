@@ -34,24 +34,14 @@ const subdomainSchema = new Schema({
       required: [true, "Last name is required"]
     },
     address: {
-      street_and_number: {
-        type: String,
-        required: [true, "Street name and Number are required"]
-      },
-      postalcode: {
-        type: String,
-        required: [true, "Postal Code is required"]
-      },
-      city: {
-        type: String,
-        required: [true, "City is required"]
-      },
-      country: {
-        type: String,
-        required: [true, "Country is required"]
-      }
+      street_and_number: String,
+      postalcode: String,
+      city: String,
+      country: String
     },
-    contact_tagline: String, 
+    phone_number: String,
+    business_email: String,
+    contact_tagline: String 
   }
 }, { versionKey: false });
 

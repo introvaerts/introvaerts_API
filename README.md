@@ -261,6 +261,16 @@ Authorization token in header
 
 `POST /subdomains/create`
 
+#### Important headers
+
+Make sure to include:
+```json
+{
+    "Authorization": Token   
+    "Content_Type": "Application/jason"
+}
+```
+
 #### Sample Request Body
 
 ```json
@@ -277,12 +287,14 @@ Authorization token in header
           "country": "Germany"
       },
       "first_name": "Bondage",
-      "last_name": "Queen"
+      "last_name": "Queen",
+      "contact_tagline": "Calle me Baby",
+      "business_email": "thorny.vibes@bondage.com",
+      "phone_number": "+4917641855555"
   },
-  "name": "This is a new Subdomain",
+  "name": "Thorny Vibes",
   "theme": "Bitchy",
-  "page_title": "Home",
-  "contact_tagline": "Calle me Baby"
+  "page_title": "Home"
 }
 ```
 
@@ -292,7 +304,7 @@ Authorization token in header
 {
     "status": "success",
     "code": 201,
-    "message": "Successfully created subdomain This is a new Subdomain",
+    "message": "Successfully created subdomain Thorny Vibes",
     "data": {
         "contact": {
             "address": {
@@ -302,15 +314,18 @@ Authorization token in header
                 "country": "Germany"
             },
             "first_name": "Bondage",
-            "last_name": "Queen"
+            "last_name": "Queen",
+            "contact_tagline": "Calle me Baby",
+            "business_email": "thorny.vibes@bondage.com",
+            "phone_number": "+4917641855555"
         },
         "galleries": [],
-        "_id": "604641bc7a437a646f13d1de",
+        "_id": "6047582ce1fda32b9f753ec8",
         "about": {
             "tagline": "My Hallo",
             "description": "Spank me one more time"
         },
-        "name": "This is a new Subdomain",
+        "name": "Thorny Vibes",
         "theme": "Bitchy",
         "page_title": "Home"
     }
@@ -334,9 +349,9 @@ Authorization token in header
   "contact": {
       "address": {
           "postalcode": "10000"
-      }
-  },
-  "contact_tagline": "Call me biatch"
+      },
+      "contact_tagline": "Call me biatch"
+  }
 }
 ```
 
@@ -360,7 +375,8 @@ Authorization token in header
                 "country": "Germany"
             },
             "first_name": "Bondage",
-            "last_name": "Queen"
+            "last_name": "Queen",
+            "contact_tagline": "Call me biatch"
         },
         "galleries": [],
         "_id": "604641bc7a437a646f13d1de",
