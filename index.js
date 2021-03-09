@@ -37,3 +37,5 @@ app.use('/galleries', galleriesRoutes);
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
 });
+
+console.log('test');
