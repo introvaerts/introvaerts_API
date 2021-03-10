@@ -36,7 +36,7 @@
 
 ```json
 {
-  "email": "monti@themaster.com",
+  "email": "monti.amro1556@themaster.com",
   "password": "thegreatest"
 }
 ```
@@ -46,10 +46,12 @@
 ```json
 {
     "status": "success",
-    "code": 200,
-    "message": "Login successful",
+    "code": 201,
+    "message": "User created successfuly",
     "data": {
-        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjAzZTIxZGE4YzE4NWFmZTM2MzU2OWJkIiwiaWF0IjoxNjE1MjE2MjkzfQ.-y9VTeoa4ZD7MLxAYKEDf9RH2Dy0SJ4g0G_BNNv7KCU"
+        "token": "eyJhbGXxXxXxXxXxXxXxXxXxXxXxIkpXVCJ9.eyJ1c2VyXXxXxXxXxXxXxXxXxXxXxXxxxxxxxxxxx1Mzk1MTkyfQ.pq98j97ZwaBXxXxXxXxXxXxXxXxXxXxXxcIR6PJT9VY",
+        "subdomainId": "6048f9788fd54c73f4907954",
+        "subdomainName": "montiamro-up1eugq4w"
     }
 }
 ```
@@ -77,7 +79,7 @@
     "code": 200,
     "message": "Login successful",
     "data": {
-        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjAzZTIxZGE4YzE4NWFmZTM2MzU2OWJkIiwiaWF0IjoxNjE1MjE2MjkzfQ.-y9VTeoa4ZD7MLxAYKEDf9RH2Dy0SJ4g0G_BNNv7KCU"
+        "token": "eyJhbGXxXxXxXxXxXxXxXxXxXxXxIkpXVCJ9.eyJ1c2VyXXxXxXxXxXxXxXxXxXxXxXxxxxxxxxxxx1Mzk1MTkyfQ.pq98j97ZwaBXxXxXxXxXxXxXxXxXxXxXxcIR6PJT9VY"
     }
 }
 ```
