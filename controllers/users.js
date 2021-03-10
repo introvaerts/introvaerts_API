@@ -4,6 +4,8 @@ const bcrypt = require('../services/bcrypt');
 const verify = require('../services/verify');
 const response = require('../services/response');
 const Subdomain = require('../models/subdomain');
+const subdomainNameGenerator = require('../services/subdomainName');
+const { createDefault } = require('./subdomains');
 
 module.exports = {
   create: async (req, res) => {
@@ -20,8 +22,11 @@ module.exports = {
         { user_id: user._id },
         process.env.JWT_SIGNATURE
       );
-      if (token)
-        res.json(response.create(201, 'User created successfuly', {token: token}));
+      if (token) {
+        const subdomainName = await subdomainNameGenerator(email);
+        const subdomainId = await createDefault(subdomainName);
+        res.json(response.create(201, 'User created successfuly', {token: token, subdomainId: subdomainId, subdomainName: subdomainName }));
+      }
     } catch (e) {
       res.json(response.buildError(e));
     }

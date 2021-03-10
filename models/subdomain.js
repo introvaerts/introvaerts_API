@@ -7,14 +7,8 @@ const subdomainSchema = new Schema({
     required: [true, "Subdomain name is required"],
     unique: [true, "Name is already taken"]
   },
-  theme: {
-    type: String,
-    required: [true, "Theme is required"]
-  },
-  page_title: {
-    type: String,
-    required: [true, "Page title is required"]
-  },
+  theme: String,
+  page_title: String,
   galleries: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Gallery'
@@ -25,14 +19,8 @@ const subdomainSchema = new Schema({
     description: String,
   },
   contact: {
-    first_name: {
-      type: String,
-      required: [true, "First name is required"]
-    },
-    last_name: {
-      type: String,
-      required: [true, "Last name is required"]
-    },
+    first_name: String,
+    last_name: String,
     address: {
       street_and_number: String,
       postalcode: String,

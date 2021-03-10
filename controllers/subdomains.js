@@ -111,6 +111,14 @@ const subdomainsController = {
     } catch (e) {
       res.json(response.buildError(e))
     }
+  },
+  createDefault: async (subdomainName) => {
+    try {
+      const subdomain = await Subdomain.create({ name: subdomainName });
+      return subdomain._id;
+    } catch (e) {
+      throw e;
+    }
   }
 };
 
