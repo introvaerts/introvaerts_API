@@ -5,7 +5,7 @@ const verify = require('../services/verify');
 const response = require('../services/response');
 const Subdomain = require('../models/subdomain');
 const subdomainNameGenerator = require('../services/subdomainName');
-const { createDefault } = require('./subdomains');
+const { create } = require('./subdomains');
 
 module.exports = {
   create: async (req, res) => {
@@ -24,8 +24,17 @@ module.exports = {
       );
       if (token) {
         const subdomainName = await subdomainNameGenerator(email);
-        const subdomainId = await createDefault(subdomainName);
-        res.json(response.create(201, 'User created successfuly', {token: token, subdomainId: subdomainId, subdomainName: subdomainName }));
+        const subdomainId = await create({
+          user_id: user._id,
+          name: subdomainName,
+        });
+        res.json(
+          response.create(201, 'User created successfuly', {
+            token: token,
+            subdomainId: subdomainId,
+            subdomainName: subdomainName,
+          })
+        );
       }
     } catch (e) {
       res.json(response.buildError(e));
@@ -45,7 +54,9 @@ module.exports = {
             process.env.JWT_SIGNATURE
           );
           if (token)
-            res.json(response.create(200, 'Login successful', { token: token }));
+            res.json(
+              response.create(200, 'Login successful', { token: token })
+            );
         } else {
           throw { code: 400, message: 'Invalid Password' };
         }
@@ -59,11 +70,18 @@ module.exports = {
   getInfo: async (req, res) => {
     try {
       const user = await User.findById(req.user_id);
-      if(user) {
-        const subdomains = await Subdomain.find({ "_id": { $in: user.subdomains }})
-        res.json(response.create(200, 'Successfully found user', { userEmail: user.email, subdomains: subdomains }));
+      if (user) {
+        const subdomains = await Subdomain.find({
+          _id: { $in: user.subdomains },
+        });
+        res.json(
+          response.create(200, 'Successfully found user', {
+            userEmail: user.email,
+            subdomains: subdomains,
+          })
+        );
       } else {
-        throw { code: 404, message: "User not found" }
+        throw { code: 404, message: 'User not found' };
       }
     } catch (e) {
       res.json(response.buildError(e));
@@ -74,10 +92,14 @@ module.exports = {
       const user = await User.findOneAndUpdate({ _id: req.user_id }, req.body, {
         new: true,
       });
-      if(user) {
-        res.json(response.create(204, 'successfully updated email', {user: user.email}));
+      if (user) {
+        res.json(
+          response.create(204, 'successfully updated email', {
+            user: user.email,
+          })
+        );
       } else {
-        throw { code: 404, message: 'User not found' }
+        throw { code: 404, message: 'User not found' };
       }
     } catch (e) {
       res.json(response.buildError(e));
