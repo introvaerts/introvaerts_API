@@ -13,8 +13,9 @@
 
 [Create Subdomain](#create-subdomain)  
 [Update Subdomain](#update-subdomain)  
-[Find a Subdomain](#find-a-subdomain)  
-[Check Subdomain name availability](#check-subdomain-name-availability)  
+[Find a Subdomain](#find-a-subdomain)
+[Find a Subdomain by name](#find-a-subdomain-by-name)
+[Check Subdomain name availability](#check-subdomain-name-availability)
 
 ## Gallery Endpoints
 
@@ -45,14 +46,14 @@
 
 ```json
 {
-    "status": "success",
-    "code": 201,
-    "message": "User created successfuly",
-    "data": {
-        "token": "eyJhbGXxXxXxXxXxXxXxXxXxXxXxIkpXVCJ9.eyJ1c2VyXXxXxXxXxXxXxXxXxXxXxXxxxxxxxxxxx1Mzk1MTkyfQ.pq98j97ZwaBXxXxXxXxXxXxXxXxXxXxXxcIR6PJT9VY",
-        "subdomainId": "6048f9788fd54c73f4907954",
-        "subdomainName": "montiamro-up1eugq4w"
-    }
+  "status": "success",
+  "code": 201,
+  "message": "User created successfuly",
+  "data": {
+    "token": "eyJhbGXxXxXxXxXxXxXxXxXxXxXxIkpXVCJ9.eyJ1c2VyXXxXxXxXxXxXxXxXxXxXxXxxxxxxxxxxx1Mzk1MTkyfQ.pq98j97ZwaBXxXxXxXxXxXxXxXxXxXxXxcIR6PJT9VY",
+    "subdomainId": "6048f9788fd54c73f4907954",
+    "subdomainName": "montiamro-up1eugq4w"
+  }
 }
 ```
 
@@ -75,12 +76,12 @@
 
 ```json
 {
-    "status": "success",
-    "code": 200,
-    "message": "Login successful",
-    "data": {
-        "token": "eyJhbGXxXxXxXxXxXxXxXxXxXxXxIkpXVCJ9.eyJ1c2VyXXxXxXxXxXxXxXxXxXxXxXxxxxxxxxxxx1Mzk1MTkyfQ.pq98j97ZwaBXxXxXxXxXxXxXxXxXxXxXxcIR6PJT9VY"
-    }
+  "status": "success",
+  "code": 200,
+  "message": "Login successful",
+  "data": {
+    "token": "eyJhbGXxXxXxXxXxXxXxXxXxXxXxIkpXVCJ9.eyJ1c2VyXXxXxXxXxXxXxXxXxXxXxXxxxxxxxxxxx1Mzk1MTkyfQ.pq98j97ZwaBXxXxXxXxXxXxXxXxXxXxXxcIR6PJT9VY"
+  }
 }
 ```
 
@@ -88,8 +89,8 @@
 
 ```json
 {
-  code: 401,
-  message: "User does not exist"
+  "code": 401,
+  "message": "User does not exist"
 }
 ```
 
@@ -97,8 +98,8 @@
 
 ```json
 {
-  code: 400,
-  message: "Invalid Password"
+  "code": 400,
+  "message": "Invalid Password"
 }
 ```
 
@@ -114,122 +115,116 @@ Authorization token in header
 
 ```json
 {
-    "status": "success",
-    "code": 200,
-    "message": "Successfully found user",
-    "data": {
-        "userEmail": "monti@thebest.com",
-        "subdomains": [
-            {
-                "about": {
-                    "about_image_url": "noceimage.com",
-                    "tagline": "beautiful shit",
-                    "description": "Holy cow"
-                },
-                "contact": {
-                    "address": {
-                        "street_and_number": "allocateurstr. 1122",
-                        "postalcode": "12044",
-                        "city": "Berlin",
-                        "country": "Germany"
-                    },
-                    "first_name": "Jasmin",
-                    "last_name": "Jenull"
-                },
-                "galleries": [
-                    "604617a6e79bf843e16aa577",
-                    "604617d7243911441eac359f"
-                ],
-                "_id": "603d175719c620e277ccf11c",
-                "name": "jasmin",
-                "theme": "black",
-                "gallaries": [
-                    "603e1b4f5f454a7ae6c191dd"
-                ],
-                "contact_tagline": "Please buy my crap"
-            },
-            {
-                "about": {
-                    "tagline": "my tagline",
-                    "description": "bla bla blaaa"
-                },
-                "contact": {
-                    "address": {
-                        "street_and_number": "sample street 100",
-                        "postalcode": "10999",
-                        "city": "Berlin",
-                        "country": "Germany"
-                    },
-                    "first_name": "first name",
-                    "last_name": "last name"
-                },
-                "galleries": [],
-                "_id": "60420355a9b4df1942deefde",
-                "name": "mysubdomain",
-                "theme": "daaaark",
-                "page_title": "my title"
-            },
-            {
-                "about": {
-                    "tagline": "my tagline",
-                    "description": "bla bla blaaa"
-                },
-                "contact": {
-                    "address": {
-                        "street_and_number": "sample street 100",
-                        "postalcode": "10999",
-                        "city": "Berlin",
-                        "country": "Germany"
-                    },
-                    "first_name": "first name",
-                    "last_name": "last name"
-                },
-                "galleries": [],
-                "_id": "6042036da9b4df1942deefdf",
-                "name": "my third subdomain",
-                "theme": "daaaark",
-                "page_title": "my title"
-            },
-            {
-                "about": {
-                    "tagline": "my tagline",
-                    "description": "bla bla blaaa"
-                },
-                "contact": {
-                    "first_name": "got a new first name",
-                    "last_name": "jafkld"
-                },
-                "galleries": [],
-                "_id": "604204d00a17d41a1eac9bcb",
-                "name": "new name",
-                "theme": "new theme",
-                "page_title": "page title"
-            },
-            {
-                "about": {
-                    "tagline": "My Hallo",
-                    "description": "Spank me one more time"
-                },
-                "contact": {
-                    "address": {
-                        "street_and_number": "sample street 100",
-                        "postalcode": "10000",
-                        "city": "Berlin",
-                        "country": "Germany"
-                    },
-                    "first_name": "Bondage",
-                    "last_name": "Queen"
-                },
-                "galleries": [],
-                "_id": "604635ad0ca2bb5b0ee82490",
-                "name": "Testing Subdomain updated",
-                "theme": "Bitchy",
-                "page_title": "Home"
-            }
-        ]
-    }
+  "status": "success",
+  "code": 200,
+  "message": "Successfully found user",
+  "data": {
+    "userEmail": "monti@thebest.com",
+    "subdomains": [
+      {
+        "about": {
+          "about_image_url": "noceimage.com",
+          "tagline": "beautiful shit",
+          "description": "Holy cow"
+        },
+        "contact": {
+          "address": {
+            "street_and_number": "allocateurstr. 1122",
+            "postalcode": "12044",
+            "city": "Berlin",
+            "country": "Germany"
+          },
+          "first_name": "Jasmin",
+          "last_name": "Jenull"
+        },
+        "galleries": ["604617a6e79bf843e16aa577", "604617d7243911441eac359f"],
+        "_id": "603d175719c620e277ccf11c",
+        "name": "jasmin",
+        "theme": "black",
+        "gallaries": ["603e1b4f5f454a7ae6c191dd"],
+        "contact_tagline": "Please buy my crap"
+      },
+      {
+        "about": {
+          "tagline": "my tagline",
+          "description": "bla bla blaaa"
+        },
+        "contact": {
+          "address": {
+            "street_and_number": "sample street 100",
+            "postalcode": "10999",
+            "city": "Berlin",
+            "country": "Germany"
+          },
+          "first_name": "first name",
+          "last_name": "last name"
+        },
+        "galleries": [],
+        "_id": "60420355a9b4df1942deefde",
+        "name": "mysubdomain",
+        "theme": "daaaark",
+        "page_title": "my title"
+      },
+      {
+        "about": {
+          "tagline": "my tagline",
+          "description": "bla bla blaaa"
+        },
+        "contact": {
+          "address": {
+            "street_and_number": "sample street 100",
+            "postalcode": "10999",
+            "city": "Berlin",
+            "country": "Germany"
+          },
+          "first_name": "first name",
+          "last_name": "last name"
+        },
+        "galleries": [],
+        "_id": "6042036da9b4df1942deefdf",
+        "name": "my third subdomain",
+        "theme": "daaaark",
+        "page_title": "my title"
+      },
+      {
+        "about": {
+          "tagline": "my tagline",
+          "description": "bla bla blaaa"
+        },
+        "contact": {
+          "first_name": "got a new first name",
+          "last_name": "jafkld"
+        },
+        "galleries": [],
+        "_id": "604204d00a17d41a1eac9bcb",
+        "name": "new name",
+        "theme": "new theme",
+        "page_title": "page title"
+      },
+      {
+        "about": {
+          "tagline": "My Hallo",
+          "description": "Spank me one more time"
+        },
+        "contact": {
+          "address": {
+            "street_and_number": "sample street 100",
+            "postalcode": "10000",
+            "city": "Berlin",
+            "country": "Germany"
+          },
+          "first_name": "Bondage",
+          "last_name": "Queen"
+        },
+        "galleries": [],
+        "_id": "604635ad0ca2bb5b0ee82490",
+        "name": "Testing Subdomain updated",
+        "theme": "Bitchy",
+        "page_title": "Home"
+      }
+    ]
+  }
 }
-
 ```
 
 ## Update email
@@ -248,12 +243,12 @@ Authorization token in header
 
 ```json
 {
-    "status": "success",
-    "code": 204,
-    "message": "successfully updated email",
-    "data": {
-        "user": "monti@thefool.com"
-    }
+  "status": "success",
+  "code": 204,
+  "message": "successfully updated email",
+  "data": {
+    "user": "monti@thefool.com"
+  }
 }
 ```
 
@@ -266,9 +261,10 @@ Authorization token in header
 #### Important headers
 
 Make sure to include:
+
 ```json
 {
-    "Authorization": Token   
+    "Authorization": Token
     "Content_Type": "Application/jason"
 }
 ```
@@ -278,21 +274,21 @@ Make sure to include:
 ```json
 {
   "about": {
-      "tagline": "My Hallo",
-      "description": "Spank me one more time"
+    "tagline": "My Hallo",
+    "description": "Spank me one more time"
   },
   "contact": {
-      "address": {
-          "street_and_number": "sample street 100",
-          "postalcode": "10000",
-          "city": "Berlin",
-          "country": "Germany"
-      },
-      "first_name": "Bondage",
-      "last_name": "Queen",
-      "contact_tagline": "Calle me Baby",
-      "business_email": "thorny.vibes@bondage.com",
-      "phone_number": "+4917641855555"
+    "address": {
+      "street_and_number": "sample street 100",
+      "postalcode": "10000",
+      "city": "Berlin",
+      "country": "Germany"
+    },
+    "first_name": "Bondage",
+    "last_name": "Queen",
+    "contact_tagline": "Calle me Baby",
+    "business_email": "thorny.vibes@bondage.com",
+    "phone_number": "+4917641855555"
   },
   "name": "Thorny Vibes",
   "theme": "Bitchy",
@@ -304,33 +300,33 @@ Make sure to include:
 
 ```json
 {
-    "status": "success",
-    "code": 201,
-    "message": "Successfully created subdomain Thorny Vibes",
-    "data": {
-        "contact": {
-            "address": {
-                "street_and_number": "sample street 100",
-                "postalcode": "10000",
-                "city": "Berlin",
-                "country": "Germany"
-            },
-            "first_name": "Bondage",
-            "last_name": "Queen",
-            "contact_tagline": "Calle me Baby",
-            "business_email": "thorny.vibes@bondage.com",
-            "phone_number": "+4917641855555"
-        },
-        "galleries": [],
-        "_id": "6047582ce1fda32b9f753ec8",
-        "about": {
-            "tagline": "My Hallo",
-            "description": "Spank me one more time"
-        },
-        "name": "Thorny Vibes",
-        "theme": "Bitchy",
-        "page_title": "Home"
-    }
+  "status": "success",
+  "code": 201,
+  "message": "Successfully created subdomain Thorny Vibes",
+  "data": {
+    "contact": {
+      "address": {
+        "street_and_number": "sample street 100",
+        "postalcode": "10000",
+        "city": "Berlin",
+        "country": "Germany"
+      },
+      "first_name": "Bondage",
+      "last_name": "Queen",
+      "contact_tagline": "Calle me Baby",
+      "business_email": "thorny.vibes@bondage.com",
+      "phone_number": "+4917641855555"
+    },
+    "galleries": [],
+    "_id": "6047582ce1fda32b9f753ec8",
+    "about": {
+      "tagline": "My Hallo",
+      "description": "Spank me one more time"
+    },
+    "name": "Thorny Vibes",
+    "theme": "Bitchy",
+    "page_title": "Home"
+  }
 }
 ```
 
@@ -346,13 +342,13 @@ Make sure to include:
   "theme": "Cool",
   "page_title": "Business",
   "about": {
-      "tagline": "Hola Amigos"
+    "tagline": "Hola Amigos"
   },
   "contact": {
-      "address": {
-          "postalcode": "10000"
-      },
-      "contact_tagline": "Call me biatch"
+    "address": {
+      "postalcode": "10000"
+    },
+    "contact_tagline": "Call me biatch"
   }
 }
 ```
@@ -361,31 +357,31 @@ Make sure to include:
 
 ```json
 {
-    "status": "success",
-    "code": 204,
-    "message": "Successfully updated Brand new subdomain",
-    "data": {
-        "about": {
-            "tagline": "Hola Amigos",
-            "description": "Spank me one more time"
-        },
-        "contact": {
-            "address": {
-                "street_and_number": "sample street 100",
-                "postalcode": "10000",
-                "city": "Berlin",
-                "country": "Germany"
-            },
-            "first_name": "Bondage",
-            "last_name": "Queen",
-            "contact_tagline": "Call me biatch"
-        },
-        "galleries": [],
-        "_id": "604641bc7a437a646f13d1de",
-        "name": "Brand new subdomain",
-        "theme": "Cool",
-        "page_title": "Business"
-    }
+  "status": "success",
+  "code": 204,
+  "message": "Successfully updated Brand new subdomain",
+  "data": {
+    "about": {
+      "tagline": "Hola Amigos",
+      "description": "Spank me one more time"
+    },
+    "contact": {
+      "address": {
+        "street_and_number": "sample street 100",
+        "postalcode": "10000",
+        "city": "Berlin",
+        "country": "Germany"
+      },
+      "first_name": "Bondage",
+      "last_name": "Queen",
+      "contact_tagline": "Call me biatch"
+    },
+    "galleries": [],
+    "_id": "604641bc7a437a646f13d1de",
+    "name": "Brand new subdomain",
+    "theme": "Cool",
+    "page_title": "Business"
+  }
 }
 ```
 
@@ -398,51 +394,97 @@ Make sure to include:
 
 ```json
 {
-    "status": "success",
-    "code": 200,
-    "message": "Found subdomain successfully",
-    "data": {
-        "subdomain": {
-            "about": {
-                "about_image_url": "noceimage.com",
-                "tagline": "beautiful shit",
-                "description": "Holy cow"
-            },
-            "contact": {
-                "address": {
-                    "street_and_number": "allocateurstr. 1122",
-                    "postalcode": "12044",
-                    "city": "Berlin",
-                    "country": "Germany"
-                },
-                "first_name": "Jasmin",
-                "last_name": "Jenull"
-            },
-            "galleries": [
-                "604617a6e79bf843e16aa577",
-                "604617d7243911441eac359f"
-            ],
-            "_id": "603d175719c620e277ccf11c",
-            "name": "jasmin",
-            "theme": "black",
-            "gallaries": [
-                "603e1b4f5f454a7ae6c191dd"
-            ],
-            "contact_tagline": "Please buy my crap"
+  "status": "success",
+  "code": 200,
+  "message": "Found subdomain successfully",
+  "data": {
+    "subdomain": {
+      "about": {
+        "about_image_url": "noceimage.com",
+        "tagline": "beautiful shit",
+        "description": "Holy cow"
+      },
+      "contact": {
+        "address": {
+          "street_and_number": "allocateurstr. 1122",
+          "postalcode": "12044",
+          "city": "Berlin",
+          "country": "Germany"
         },
-        "galleries": [
-            {
-                "images": [],
-                "_id": "604617a6e79bf843e16aa577",
-                "name": "New Gallery"
-            },
-            {
-                "images": [],
-                "_id": "604617d7243911441eac359f",
-                "name": "New Gallery 2"
-            }
-        ]
-    }
+        "first_name": "Jasmin",
+        "last_name": "Jenull"
+      },
+      "galleries": ["604617a6e79bf843e16aa577", "604617d7243911441eac359f"],
+      "_id": "603d175719c620e277ccf11c",
+      "name": "jasmin",
+      "theme": "black",
+      "gallaries": ["603e1b4f5f454a7ae6c191dd"],
+      "contact_tagline": "Please buy my crap"
+    },
+    "galleries": [
+      {
+        "images": [],
+        "_id": "604617a6e79bf843e16aa577",
+        "name": "New Gallery"
+      },
+      {
+        "images": [],
+        "_id": "604617d7243911441eac359f",
+        "name": "New Gallery 2"
+      }
+    ]
+  }
+}
+```
+
+### Find a Subdomain by name
+
+`GET /subdomains/names/:name`
+
+#### Sample Response
+
+```json
+{
+  "status": "success",
+  "code": 200,
+  "message": "Found subdomain successfully",
+  "data": {
+    "subdomain": {
+      "about": {
+        "about_image_url": "noceimage.com",
+        "tagline": "beautiful shit",
+        "description": "Holy cow"
+      },
+      "contact": {
+        "address": {
+          "street_and_number": "allocateurstr. 1122",
+          "postalcode": "12044",
+          "city": "Berlin",
+          "country": "Germany"
+        },
+        "first_name": "Jasmin",
+        "last_name": "Jenull"
+      },
+      "galleries": ["604617a6e79bf843e16aa577", "604617d7243911441eac359f"],
+      "_id": "603d175719c620e277ccf11c",
+      "name": "jasmin",
+      "theme": "black",
+      "gallaries": ["603e1b4f5f454a7ae6c191dd"],
+      "contact_tagline": "Please buy my crap"
+    },
+    "galleries": [
+      {
+        "images": [],
+        "_id": "604617a6e79bf843e16aa577",
+        "name": "New Gallery"
+      },
+      {
+        "images": [],
+        "_id": "604617d7243911441eac359f",
+        "name": "New Gallery 2"
+      }
+    ]
+  }
 }
 ```
 
@@ -459,13 +501,16 @@ Make sure to include:
     "isAvailable": false
 }
 ```
+
 OR
+
 ```
 {
     "message": "The name jasmin is available",
     "isAvailable": true
 }
 ```
+
 ------ Gallery --------
 
 ### Create a Gallery
@@ -485,14 +530,14 @@ OR
 
 ```json
 {
-    "status": "success",
-    "code": 201,
-    "message": "Gallery created successfully and added to jasmin",
-    "data": {
-        "images": [],
-        "_id": "604642eb7a437a646f13d1df",
-        "name": "Awesome Gallery"
-    }
+  "status": "success",
+  "code": 201,
+  "message": "Gallery created successfully and added to jasmin",
+  "data": {
+    "images": [],
+    "_id": "604642eb7a437a646f13d1df",
+    "name": "Awesome Gallery"
+  }
 }
 ```
 
@@ -505,48 +550,48 @@ OR
 
 ```json
 {
-    "status": "success",
-    "code": 200,
-    "message": "Found gallery successfully",
-    "data": {
-        "gallery": {
-            "images": [
-                "6044e17bb8c5d52f4a029239",
-                "6044e33c9cb96e31dbc00756",
-                "6044e3b3315e37325defff9e",
-                "6044e5fbce77ad35236a3b8e",
-                "6044e603ce77ad35236a3b8f"
-            ],
-            "_id": "6044b9139352920b3cdd42ae",
-            "name": "Testing now 3"
+  "status": "success",
+  "code": 200,
+  "message": "Found gallery successfully",
+  "data": {
+    "gallery": {
+      "images": [
+        "6044e17bb8c5d52f4a029239",
+        "6044e33c9cb96e31dbc00756",
+        "6044e3b3315e37325defff9e",
+        "6044e5fbce77ad35236a3b8e",
+        "6044e603ce77ad35236a3b8f"
+      ],
+      "_id": "6044b9139352920b3cdd42ae",
+      "name": "Testing now 3"
+    },
+    "images": [
+      {
+        "caption": {
+          "title": "Introvaerts Logo test 2",
+          "media": "logo",
+          "year": 2021,
+          "dimensions": "200 x 200"
         },
-        "images": [
-            {
-                "caption": {
-                    "title": "Introvaerts Logo test 2",
-                    "media": "logo",
-                    "year": 2021,
-                    "dimensions": "200 x 200"
-                },
-                "_id": "6044e5fbce77ad35236a3b8e",
-                "alt_text": "Introvaerts Logo",
-                "description": "This is the logo of our startup",
-                "image_url": "https://introvearts.s3.eu-central-1.amazonaws.com/6044b9139352920b3cdd42ae/1615128059042.png"
-            },
-            {
-                "caption": {
-                    "title": "Introvaerts Logo test 3",
-                    "media": "logo",
-                    "year": 2021,
-                    "dimensions": "200 x 200"
-                },
-                "_id": "6044e603ce77ad35236a3b8f",
-                "alt_text": "Introvaerts Logo",
-                "description": "This is the logo of our startup",
-                "image_url": "https://introvearts.s3.eu-central-1.amazonaws.com/6044b9139352920b3cdd42ae/1615128066873.png"
-            }
-        ]
-    }
+        "_id": "6044e5fbce77ad35236a3b8e",
+        "alt_text": "Introvaerts Logo",
+        "description": "This is the logo of our startup",
+        "image_url": "https://introvearts.s3.eu-central-1.amazonaws.com/6044b9139352920b3cdd42ae/1615128059042.png"
+      },
+      {
+        "caption": {
+          "title": "Introvaerts Logo test 3",
+          "media": "logo",
+          "year": 2021,
+          "dimensions": "200 x 200"
+        },
+        "_id": "6044e603ce77ad35236a3b8f",
+        "alt_text": "Introvaerts Logo",
+        "description": "This is the logo of our startup",
+        "image_url": "https://introvearts.s3.eu-central-1.amazonaws.com/6044b9139352920b3cdd42ae/1615128066873.png"
+      }
+    ]
+  }
 }
 ```
 
@@ -558,7 +603,7 @@ OR
 
 ```json
 {
-  "name": "The Best Gallery in the world",
+  "name": "The Best Gallery in the world"
 }
 ```
 
@@ -566,20 +611,20 @@ OR
 
 ```json
 {
-    "status": "success",
-    "code": 200,
-    "message": "Name updated successfully",
-    "data": {
-        "images": [
-            "6044e17bb8c5d52f4a029239",
-            "6044e33c9cb96e31dbc00756",
-            "6044e3b3315e37325defff9e",
-            "6044e5fbce77ad35236a3b8e",
-            "6044e603ce77ad35236a3b8f"
-        ],
-        "_id": "6044b9139352920b3cdd42ae",
-        "name": "The Best Gallery in the world"
-    }
+  "status": "success",
+  "code": 200,
+  "message": "Name updated successfully",
+  "data": {
+    "images": [
+      "6044e17bb8c5d52f4a029239",
+      "6044e33c9cb96e31dbc00756",
+      "6044e3b3315e37325defff9e",
+      "6044e5fbce77ad35236a3b8e",
+      "6044e603ce77ad35236a3b8f"
+    ],
+    "_id": "6044b9139352920b3cdd42ae",
+    "name": "The Best Gallery in the world"
+  }
 }
 ```
 
@@ -591,9 +636,9 @@ OR
 
 ```json
 {
-    "status": "success",
-    "code": 204,
-    "message": "Successfuly deleted Awesome Gallery"
+  "status": "success",
+  "code": 204,
+  "message": "Successfuly deleted Awesome Gallery"
 }
 ```
 
@@ -622,21 +667,21 @@ OR
 
 ```json
 {
-    "status": "success",
-    "code": 201,
-    "message": "Successfully uploaded image and added to The Best Gallery in the world",
-    "data": {
-        "_id": "604643dc7a437a646f13d1e0",
-        "caption": {
-            "title": "Introvaerts Logo test 3",
-            "media": "logo",
-            "year": 2021,
-            "dimensions": "200 x 200"
-        },
-        "alt_text": "Introvaerts Logo",
-        "description": "This is the logo of our startup",
-        "image_url": "https://introvearts.s3.amazonaws.com/6044b9139352920b3cdd42ae/1615217628118.png"
-    }
+  "status": "success",
+  "code": 201,
+  "message": "Successfully uploaded image and added to The Best Gallery in the world",
+  "data": {
+    "_id": "604643dc7a437a646f13d1e0",
+    "caption": {
+      "title": "Introvaerts Logo test 3",
+      "media": "logo",
+      "year": 2021,
+      "dimensions": "200 x 200"
+    },
+    "alt_text": "Introvaerts Logo",
+    "description": "This is the logo of our startup",
+    "image_url": "https://introvearts.s3.amazonaws.com/6044b9139352920b3cdd42ae/1615217628118.png"
+  }
 }
 ```
 
@@ -648,8 +693,8 @@ OR
 
 ```json
 {
-    "status": "success",
-    "code": 204,
-    "message": "Image successfully deleted"
+  "status": "success",
+  "code": 204,
+  "message": "Image successfully deleted"
 }
 ```
