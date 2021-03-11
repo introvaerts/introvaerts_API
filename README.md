@@ -27,6 +27,7 @@
 ## Image Endpoints
 
 [Upload Image](#upload-image)  
+[Get one Image](#get-one-image)
 [Delete Image](#delete-image)
 
 ### Create User
@@ -684,6 +685,33 @@ OR
   }
 }
 ```
+
+### Get one Image
+
+GET /images/:id
+
+#### Sample Response
+
+```json
+{
+    "status": "success",
+    "code": 200,
+    "message": "Found image successfuly",
+    "data": {
+        "caption": {
+            "title": "Our Logo",
+            "media": "logo",
+            "year": 2021,
+            "dimensions": "200 x 200"
+        },
+        "_id": "60487de10eb3050815a82195",
+        "alt_text": "Introvaerts Logo",
+        "description": "This is the logo of our startup",
+        "image_url": "https://introvearts.s3.amazonaws.com/60487c5da696095204ef991c/1615363553392.png"
+    }
+}
+```
+
 
 ### Delete Image
 
