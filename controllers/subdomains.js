@@ -10,14 +10,20 @@ const convertDotNotation = require('../services/convertDotNotation');
 const subdomainsController = {
   create: async (req, res) => {
     try {
-      subdomain = await Subdomain.create({ name: req.name });
-      /* console.log('create subdomain: ', subdomain); */
+      const subdomainName = req.name;
+      const subdomain = subdomainName ?
+          await Subdomain.create({ name: subdomainName }) :
+          await Subdomain.create(req.body);
       user = await User.findOneAndUpdate(
         { _id: req.user_id },
         { $push: { subdomains: subdomain._id } },
         { new: true }
       );
-      return subdomain._id;
+      if (subdomainName) {
+        return subdomain._id;
+      } else {
+        res.json(response.create(201, `Successfully created subdomain ${subdomain.name}`, subdomain));
+      }
     } catch (e) {
       res.json(response.buildError(e));
     }
