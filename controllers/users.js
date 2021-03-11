@@ -8,7 +8,7 @@ const subdomainNameGenerator = require('../services/subdomainName');
 const { create } = require('./subdomains');
 
 module.exports = {
-  create: async (req, res, next) => {
+  create: async (req, res) => {
     const { email, password } = req.body;
     try {
       verify.email(email);
