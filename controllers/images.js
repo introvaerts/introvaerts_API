@@ -40,6 +40,19 @@ const imagesController = {
     } catch (e) {
       res.json(response.buildError(e));
     }
+  },
+  getOne: async (req, res) => {
+    const { id } = req.params;
+    try {
+      const image = await Image.findById(id);
+      if(image) {
+        res.json(response.create(200, "Found image successfuly", image))
+      } else {
+        throw { code: 404, message: "Image not found" }
+      }
+    } catch (e) {
+      res.json(response.buildError(e))
+    }
   }
 };
 
