@@ -17,7 +17,6 @@ const subdomainsController = {
         { $push: { subdomains: subdomain._id } },
         { new: true }
       );
-      console.log('to be returned: ', subdomain._id);
       return subdomain._id;
     } catch (e) {
       res.json(response.buildError(e));
