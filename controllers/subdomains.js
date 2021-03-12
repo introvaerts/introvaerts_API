@@ -110,10 +110,10 @@ const subdomainsController = {
   },
   findByName: async (req, res) => {
     try {
-      const subdomain = await Subdomain.find({ name: req.params.name });
+      const subdomain = await Subdomain.findOne({ name: req.params.name });
       if (subdomain) {
         const galleries = await Gallery.find({
-          _id: { $in: subdomain.galleries },
+          "_id": { $in: subdomain.galleries },
         });
         res.json(
           response.create(200, 'Found subdomain successfully', {
