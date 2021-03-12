@@ -44,7 +44,17 @@ const galleriesController = {
   findOneByName: async (req, res) => {
     try {
       const gallery = await Gallery.findOne({ name: req.params.name });
-      res.json(response.create(200, 'Found gallery successfully', gallery));
+      if (gallery) {
+        const images = await Image.find({ _id: { $in: gallery.images } });
+        res.json(
+          response.create(200, 'Found gallery successfully', {
+            gallery: gallery,
+            images: images,
+          })
+        );
+      } else {
+        throw { code: 404, message: 'Gallery not found' };
+      }
     } catch (e) {
       res.json(response.buildError(e));
     }
