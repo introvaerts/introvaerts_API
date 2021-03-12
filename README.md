@@ -5,24 +5,25 @@
 ## User Endpoints
 
 [Create User](#create-user)  
-[Login](#login)
-[Get info](#get-info)
-[Update email](#update-email)
+[Login](#login)  
+[Get info](#get-info)  
+[Update email](#update-email)  
 
 ## Subdomain Endpoints
 
 [Create Subdomain](#create-subdomain)  
 [Update Subdomain](#update-subdomain)  
-[Find a Subdomain](#find-a-subdomain)
-[Find a Subdomain by name](#find-a-subdomain-by-name)
-[Check Subdomain name availability](#check-subdomain-name-availability)
+[Find a Subdomain](#find-a-subdomain)  
+[Find a Subdomain by name](#find-a-subdomain-by-name)  
+[Check Subdomain name availability](#check-subdomain-name-availability)  
 
 ## Gallery Endpoints
 
 [Create a Gallery](#create-a-gallery)  
 [Find a Gallery](#find-a-gallery)  
+[Find a Gallery by Gallery name](#find-a-gallery-by-gallery-name)  
 [Update Gallery name](#update-gallery-name)  
-[Delete a Gallery](#delete-a-gallery)
+[Delete a Gallery](#delete-a-gallery)  
 
 ## Image Endpoints
 
@@ -565,6 +566,60 @@ OR
       ],
       "_id": "6044b9139352920b3cdd42ae",
       "name": "Testing now 3"
+    },
+    "images": [
+      {
+        "caption": {
+          "title": "Introvaerts Logo test 2",
+          "media": "logo",
+          "year": 2021,
+          "dimensions": "200 x 200"
+        },
+        "_id": "6044e5fbce77ad35236a3b8e",
+        "alt_text": "Introvaerts Logo",
+        "description": "This is the logo of our startup",
+        "image_url": "https://introvearts.s3.eu-central-1.amazonaws.com/6044b9139352920b3cdd42ae/1615128059042.png"
+      },
+      {
+        "caption": {
+          "title": "Introvaerts Logo test 3",
+          "media": "logo",
+          "year": 2021,
+          "dimensions": "200 x 200"
+        },
+        "_id": "6044e603ce77ad35236a3b8f",
+        "alt_text": "Introvaerts Logo",
+        "description": "This is the logo of our startup",
+        "image_url": "https://introvearts.s3.eu-central-1.amazonaws.com/6044b9139352920b3cdd42ae/1615128066873.png"
+      }
+    ]
+  }
+}
+```
+
+### Find a Gallery by Gallery name
+
+`GET /galleries/names/:name`
+`GET /galleries/names/festival`
+
+#### Sample Response
+
+```json
+{
+  "status": "success",
+  "code": 200,
+  "message": "Found gallery successfully",
+  "data": {
+    "gallery": {
+      "images": [
+        "6044e17bb8c5d52f4a029239",
+        "6044e33c9cb96e31dbc00756",
+        "6044e3b3315e37325defff9e",
+        "6044e5fbce77ad35236a3b8e",
+        "6044e603ce77ad35236a3b8f"
+      ],
+      "_id": "6044b9139352920b3cdd42ae",
+      "name": "festival"
     },
     "images": [
       {
