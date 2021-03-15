@@ -5,11 +5,10 @@ const authenticateUser = (req, res, next) => {
   try {
     const token = req.header('Authorization');
     const decodedToken = jwt.verify(token, process.env.JWT_SIGNATURE);
-    console.log(decodedToken)
     req.user_id = decodedToken.user_id;
     next();
   } catch (e) {
-    res.send(response.buildError(e))
+    res.send(response.buildError(e));
   }
 };
 
