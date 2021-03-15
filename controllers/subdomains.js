@@ -10,19 +10,25 @@ const convertDotNotation = require('../services/convertDotNotation');
 const subdomainsController = {
   create: async (req, res) => {
     try {
-      const subdomainName = req.name;
-      const subdomain = subdomainName ?
-          await Subdomain.create({ name: subdomainName }) :
-          await Subdomain.create(req.body);
+      const defaultSubdomain = req.defaultSubdomain;
+      const subdomain = defaultSubdomain
+        ? await Subdomain.create(defaultSubdomain)
+        : await Subdomain.create(req.body);
       user = await User.findOneAndUpdate(
         { _id: req.user_id },
         { $push: { subdomains: subdomain._id } },
         { new: true }
       );
-      if (subdomainName) {
+      if (defaultSubdomain) {
         return subdomain._id;
       } else {
-        res.json(response.create(201, `Successfully created subdomain ${subdomain.name}`, subdomain));
+        res.json(
+          response.create(
+            201,
+            `Successfully created subdomain ${subdomain.name}`,
+            subdomain
+          )
+        );
       }
     } catch (e) {
       res.json(response.buildError(e));
@@ -50,7 +56,6 @@ const subdomainsController = {
   },
   getAllByUser: async (req, res) => {
     try {
-      console.log(req.user_id);
       const user = await User.findById(req.user_id);
       if (user) {
         const subdomains = await Subdomain.find({
@@ -113,7 +118,7 @@ const subdomainsController = {
       const subdomain = await Subdomain.findOne({ name: req.params.name });
       if (subdomain) {
         const galleries = await Gallery.find({
-          "_id": { $in: subdomain.galleries },
+          _id: { $in: subdomain.galleries },
         });
         res.json(
           response.create(200, 'Found subdomain successfully', {
@@ -149,6 +154,25 @@ const subdomainsController = {
       return subdomain._id;
     } catch (e) {
       throw e;
+    }
+  },
+  publish: async (req, res) => {
+    try {
+      const subdomainPreview = await Subdomain.findById(req.params.id).lean();
+      subdomainPreview.name = subdomainPreview.name.replace('-preview', '');
+      const liveId = (await User.findById(req.user_id)).subdomains.find(
+        id => id !== req.params.id
+      );
+      delete subdomainPreview._id;
+      const subdomainLive = await Subdomain.findOneAndUpdate(
+        { _id: liveId },
+        subdomainPreview
+      );
+      res.json(
+        response.create(200, `Successfully published ${subdomainLive.name}`)
+      );
+    } catch (e) {
+      res.json(response.buildError(e));
     }
   },
 };
