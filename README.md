@@ -7,7 +7,7 @@
 [Create User](#create-user)  
 [Login](#login)  
 [Get info](#get-info)  
-[Update email](#update-email)  
+[Update email](#update-email)
 
 ## Subdomain Endpoints
 
@@ -15,7 +15,8 @@
 [Update Subdomain](#update-subdomain)  
 [Find a Subdomain](#find-a-subdomain)  
 [Find a Subdomain by name](#find-a-subdomain-by-name)  
-[Check Subdomain name availability](#check-subdomain-name-availability)  
+[Check Subdomain name availability](#check-subdomain-name-availability)
+[Publish Subdomain](#publish-subdomain)
 
 ## Gallery Endpoints
 
@@ -23,7 +24,7 @@
 [Find a Gallery](#find-a-gallery)  
 [Find a Gallery by Gallery name](#find-a-gallery-by-gallery-name)  
 [Update Gallery name](#update-gallery-name)  
-[Delete a Gallery](#delete-a-gallery)  
+[Delete a Gallery](#delete-a-gallery)
 
 ## Image Endpoints
 
@@ -50,11 +51,11 @@
 {
   "status": "success",
   "code": 201,
-  "message": "User created successfuly",
+  "message": "User created successfully",
   "data": {
-    "token": "eyJhbGXxXxXxXxXxXxXxXxXxXxXxIkpXVCJ9.eyJ1c2VyXXxXxXxXxXxXxXxXxXxXxXxxxxxxxxxxx1Mzk1MTkyfQ.pq98j97ZwaBXxXxXxXxXxXxXxXxXxXxXxcIR6PJT9VY",
-    "subdomainId": "6048f9788fd54c73f4907954",
-    "subdomainName": "montiamro-up1eugq4w"
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjA0ZjQxYjU1NjQwMWM2NmZlYjQ2N2JkIiwiaWF0IjoxNjE1ODA2OTAxfQ.VuGKbDiSPbvI5sF5Px1M-E6DWRjjFMCDYow0-USO6yw",
+    "subdomainId": "604f41b556401c66feb467be",
+    "subdomainIdPreview": "604f41b556401c66feb467bf"
   }
 }
 ```
@@ -121,108 +122,35 @@ Authorization token in header
   "code": 200,
   "message": "Successfully found user",
   "data": {
-    "userEmail": "monti@thebest.com",
+    "userEmail": "anotheranother1@tesfafddadft1affadsfdfdasff1a.com",
     "subdomains": [
       {
-        "about": {
-          "about_image_url": "noceimage.com",
-          "tagline": "beautiful shit",
-          "description": "Holy cow"
-        },
-        "contact": {
-          "address": {
-            "street_and_number": "allocateurstr. 1122",
-            "postalcode": "12044",
-            "city": "Berlin",
-            "country": "Germany"
-          },
-          "first_name": "Jasmin",
-          "last_name": "Jenull"
-        },
-        "galleries": ["604617a6e79bf843e16aa577", "604617d7243911441eac359f"],
-        "_id": "603d175719c620e277ccf11c",
-        "name": "jasmin",
-        "theme": "black",
-        "gallaries": ["603e1b4f5f454a7ae6c191dd"],
-        "contact_tagline": "Please buy my crap"
+        "galleries": [],
+        "_id": "604f41b556401c66feb467be",
+        "name": "anotheranother1-bprwbuvhc"
       },
       {
         "about": {
-          "tagline": "my tagline",
-          "description": "bla bla blaaa"
+          "tagline": "Your tagline",
+          "description": "Your description"
         },
         "contact": {
           "address": {
-            "street_and_number": "sample street 100",
+            "street_and_number": "Your street 100",
             "postalcode": "10999",
-            "city": "Berlin",
-            "country": "Germany"
+            "city": "Your city",
+            "country": "Your country"
           },
-          "first_name": "first name",
-          "last_name": "last name"
+          "first_name": "Your first name",
+          "last_name": "Your last name",
+          "phone_number": "Your phone number",
+          "business_email": "Your email address",
+          "contact_tagline": "Your tagline"
         },
         "galleries": [],
-        "_id": "60420355a9b4df1942deefde",
-        "name": "mysubdomain",
-        "theme": "daaaark",
-        "page_title": "my title"
-      },
-      {
-        "about": {
-          "tagline": "my tagline",
-          "description": "bla bla blaaa"
-        },
-        "contact": {
-          "address": {
-            "street_and_number": "sample street 100",
-            "postalcode": "10999",
-            "city": "Berlin",
-            "country": "Germany"
-          },
-          "first_name": "first name",
-          "last_name": "last name"
-        },
-        "galleries": [],
-        "_id": "6042036da9b4df1942deefdf",
-        "name": "my third subdomain",
-        "theme": "daaaark",
-        "page_title": "my title"
-      },
-      {
-        "about": {
-          "tagline": "my tagline",
-          "description": "bla bla blaaa"
-        },
-        "contact": {
-          "first_name": "got a new first name",
-          "last_name": "jafkld"
-        },
-        "galleries": [],
-        "_id": "604204d00a17d41a1eac9bcb",
-        "name": "new name",
-        "theme": "new theme",
-        "page_title": "page title"
-      },
-      {
-        "about": {
-          "tagline": "My Hallo",
-          "description": "Spank me one more time"
-        },
-        "contact": {
-          "address": {
-            "street_and_number": "sample street 100",
-            "postalcode": "10000",
-            "city": "Berlin",
-            "country": "Germany"
-          },
-          "first_name": "Bondage",
-          "last_name": "Queen"
-        },
-        "galleries": [],
-        "_id": "604635ad0ca2bb5b0ee82490",
-        "name": "Testing Subdomain updated",
-        "theme": "Bitchy",
-        "page_title": "Home"
+        "_id": "604f41b556401c66feb467bf",
+        "name": "anotheranother1-bprwbuvhc-preview",
+        "page_title": "Your page title"
       }
     ]
   }
@@ -513,6 +441,20 @@ OR
 }
 ```
 
+### Publish Subdomain
+
+`GET /subdomains/publish/:previewSubdomainid`
+
+#### Sample Response
+
+```
+{
+  "status": "success",
+  "code": 200,
+  "message": "Successfully published anotheranother1-bprwbuvhc"
+}
+```
+
 ------ Gallery --------
 
 ### Create a Gallery
@@ -749,24 +691,23 @@ GET /images/:id
 
 ```json
 {
-    "status": "success",
-    "code": 200,
-    "message": "Found image successfuly",
-    "data": {
-        "caption": {
-            "title": "Our Logo",
-            "media": "logo",
-            "year": 2021,
-            "dimensions": "200 x 200"
-        },
-        "_id": "60487de10eb3050815a82195",
-        "alt_text": "Introvaerts Logo",
-        "description": "This is the logo of our startup",
-        "image_url": "https://introvearts.s3.amazonaws.com/60487c5da696095204ef991c/1615363553392.png"
-    }
+  "status": "success",
+  "code": 200,
+  "message": "Found image successfuly",
+  "data": {
+    "caption": {
+      "title": "Our Logo",
+      "media": "logo",
+      "year": 2021,
+      "dimensions": "200 x 200"
+    },
+    "_id": "60487de10eb3050815a82195",
+    "alt_text": "Introvaerts Logo",
+    "description": "This is the logo of our startup",
+    "image_url": "https://introvearts.s3.amazonaws.com/60487c5da696095204ef991c/1615363553392.png"
+  }
 }
 ```
-
 
 ### Delete Image
 

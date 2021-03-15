@@ -5,6 +5,7 @@ const verify = require('../services/verify');
 const response = require('../services/response');
 const Subdomain = require('../models/subdomain');
 const subdomainNameGenerator = require('../services/subdomainName');
+const populatePreview = require('../services/populatePreview');
 const { create } = require('./subdomains');
 
 module.exports = {
@@ -26,13 +27,18 @@ module.exports = {
         const subdomainName = await subdomainNameGenerator(email);
         const subdomainId = await create({
           user_id: user._id,
-          name: subdomainName,
+          defaultSubdomain: { name: subdomainName },
+        });
+
+        const subdomainIdPreview = await create({
+          user_id: user._id,
+          defaultSubdomain: populatePreview(subdomainName),
         });
         res.json(
-          response.create(201, 'User created successfuly', {
+          response.create(201, 'User created successfully', {
             token: token,
             subdomainId: subdomainId,
-            subdomainName: subdomainName,
+            subdomainIdPreview: subdomainIdPreview,
           })
         );
       }
