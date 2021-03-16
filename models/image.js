@@ -5,7 +5,7 @@ const imageSchema = new Schema({
   caption: {
     title: String,  
     media: String,
-    year: Number,
+    year: String,
     dimensions: String,
   },
   alt_text: String, 
