@@ -6,6 +6,8 @@ const User = require('../models/user');
 // Import services
 const response = require('../services/response');
 const convertDotNotation = require('../services/convertDotNotation');
+const S3 = require('../services/s3');
+const form = require('../services/formParser');
 
 const subdomainsController = {
   create: async (req, res) => {
@@ -171,6 +173,23 @@ const subdomainsController = {
       res.json(
         response.create(200, `Successfully published ${subdomainLive.name}`)
       );
+    } catch (e) {
+      res.json(response.buildError(e));
+    }
+  },
+  imageUpload: async (req, res) => {
+    try {
+      const parsedImage = await form.parseImage(req);
+      const imageObject = await S3.upload(parsedImage);
+      imageObject['about_image_url'] = imageObject['image_url'];
+      const subdomain = await Subdomain.findOneAndUpdate(
+        { _id: imageObject.subdomain_id },
+        {
+          about: Object.assign(imageObject),
+        },
+        { new: true }
+      );
+      res.json(response.create(204, `Successfully uploaded image`, subdomain));
     } catch (e) {
       res.json(response.buildError(e));
     }
