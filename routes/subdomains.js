@@ -14,4 +14,9 @@ router.get(
   authenticateUser,
   subdomainsController.isAvailable
 );
+router.patch(
+  '/about/image-upload',
+  authenticateUser,
+  subdomainsController.imageUpload
+);
 module.exports = router;
