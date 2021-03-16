@@ -17,6 +17,7 @@
 [Find a Subdomain by name](#find-a-subdomain-by-name)  
 [Check Subdomain name availability](#check-subdomain-name-availability)
 [Publish Subdomain](#publish-subdomain)
+[Upload About Image](#upload-about-image)
 
 ## Gallery Endpoints
 
@@ -452,6 +453,55 @@ OR
   "status": "success",
   "code": 200,
   "message": "Successfully published anotheranother1-bprwbuvhc"
+}
+```
+
+### Upload About Image
+
+`PATCH subdomains/about/image-upload`
+
+#### Sample Request (Form-Data)
+
+```
+{
+  "image": "image-file.png",
+  "subdomain_id": "6044b9139352920b3cdd42ae",
+  "tagline": "some tagline",
+  "description": "some description"
+}
+```
+
+#### Sample Response
+
+```
+{
+  "status": "success",
+  "code": 204,
+  "message": "Successfully uploaded image",
+  "data": {
+      "about": {
+          "tagline": "some tagline",
+          "description": "some description",
+          "about_image_url": "https://introvearts.s3.amazonaws.com/605094182a77dc26c4af0ece/1615895340312.png"
+      },
+      "contact": {
+          "address": {
+              "street_and_number": "Your street 100",
+              "postalcode": "10999",
+              "city": "Your city",
+              "country": "Your country"
+          },
+          "first_name": "Your first name",
+          "last_name": "Your last name",
+          "phone_number": "Your phone number",
+          "business_email": "Your email address",
+          "contact_tagline": "Your tagline"
+      },
+      "galleries": [],
+      "_id": "605094182a77dc26c4af0ece",
+      "name": "jasmin-nklf7cnqo-preview",
+      "page_title": "Your page title"
+  }
 }
 ```
 
