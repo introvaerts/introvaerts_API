@@ -7,12 +7,16 @@ module.exports = {
       secretAccessKey: process.env.S3_SECRET_KEY,
     });
 
+    const keyPrefix = parsedImage[2].gallery_id
+      ? parsedImage[2].gallery_id
+      : parsedImage[2].subdomain_id;
+
     const params = {
       Bucket: process.env.S3_BUCKET,
       ContentEncoding: 'base64',
       ContentDisposition: 'inline',
       ContentType: 'image/jpeg',
-      Key: `${parsedImage[2].gallery_id}/${Date.now()}.${parsedImage[1]}`,
+      Key: `${keyPrefix}/${Date.now()}.${parsedImage[1]}`,
       Body: parsedImage[0],
     };
 
