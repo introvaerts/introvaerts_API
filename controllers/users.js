@@ -32,7 +32,7 @@ module.exports = {
 
         const subdomainIdPreview = await create({
           user_id: user._id,
-          defaultSubdomain: populatePreview(subdomainName),
+          defaultSubdomain: populatePreview(subdomainName, user),
         });
         res.json(
           response.create(201, 'User created successfully', {
