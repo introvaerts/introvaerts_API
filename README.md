@@ -1,6 +1,6 @@
 # introvÆrts
 
-## Endoints
+## Endpoints
 
 ## User Endpoints
 
