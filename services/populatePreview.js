@@ -1,4 +1,4 @@
-module.exports = subdomainName => {
+module.exports = (subdomainName, user) => {
   return {
     name: `${subdomainName}-preview`,
     page_title: 'Your page title',
@@ -16,7 +16,7 @@ module.exports = subdomainName => {
         country: 'Your country',
       },
       phone_number: 'Your phone number',
-      business_email: 'Your email address',
+      business_email: `${user.email}`,
       contact_tagline: 'Your tagline',
     },
   };
